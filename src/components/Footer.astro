@@ -1,123 +1,287 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo.jpeg';
 import FacebookIcon from '../assets/icons/FacebookIcon.astro';
 import InstagramIcon from '../assets/icons/InstagramIcon.astro';
-import TailcastLogo from '../assets/logos/TailcastLogo.astro';
 import TwitterIcon from '../assets/icons/TwitterIcon.astro';
 
-const footerData = [
-  {
-    title: 'Products',
-    items: ['News and Stories', 'Roadmap', 'Integrations', 'Documentation'],
-  },
-  {
-    title: 'Important Links',
-    items: [
-      'Organization Team',
-      'Our Journeys',
-      'Pricing Plans',
-      'Roadmap',
-      'Terms & Conditions',
-      'Privacy Policy',
-    ],
-  },
-  {
-    title: 'Company',
-    items: ['Jobs', 'Press', 'Partners', 'Community'],
-  },
+const services = [
+  'Mechanical Services',
+  'Labor Services',
+  'M.S & S.S Material Suppliers',
+  'Insulation Material Suppliers',
+  'Boiler Operating',
+  'Ducting & Pipe Line Insulation',
+  'Loading & Unloading',
+  'Quality Control',
+];
+
+const quickLinks = [
+  { label: 'Home',         href: '#home' },
+  { label: 'About Us',     href: '#features' },
+  { label: 'Services',     href: '#services' },
+  { label: 'Our Projects', href: '#gallery' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact Us',   href: '#contact' },
 ];
 ---
 
-<footer aria-label="Site footer">
-  <div class="bg-bgDark1 radius-for-skewed pt-10 pb-16 lg:pt-16 lg:pb-20">
-    <div class="content-container">
-      <div class="flex flex-wrap">
-        <div
-          class="order-1 mb-16 flex w-full flex-nowrap justify-center gap-x-8 sm:flex-wrap sm:gap-x-16 lg:order-2 lg:mb-0 lg:w-2/3 lg:justify-end"
-        >
-          {
-            footerData.map((section, i) => (
-              <div
-                class:list={[
-                  'text-center sm:mb-16 sm:w-auto md:mb-0 lg:text-left',
-                  i === 2 ? 'hidden sm:block' : 'w-1/2 sm:w-auto',
-                ]}
-              >
-                <h3 class="text-primaryText mb-5 text-lg font-bold">{section.title}</h3>
-                <ul>
-                  {section.items.map((item) => (
-                    <li class="mb-3">
-                      <a class="cursor-pointer text-sm text-gray-400 hover:text-gray-300" href="#">
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))
-          }
-        </div>
-        <div class="order-2 w-full lg:order-1 lg:mb-0 lg:w-1/3">
-          <div class="flex grow basis-0 items-center justify-center lg:justify-start">
-            <div class="mr-2 text-6xl text-white">
-              <TailcastLogo />
-            </div>
-            <div class="font-['Inter'] text-xl font-bold text-white">Tailcast</div>
-          </div>
-          <p
-            class="mx-auto mt-4 mb-6 text-center leading-loose text-gray-400 sm:w-[22rem] lg:mx-0 lg:w-[20rem] lg:text-left xl:w-[24rem]"
-          >
-            Dashboard images were made using free Dark Admin dashboard that you can find <a
-              href="#!"
-              rel="noopener noreferrer"
-              class="text-gray-100"
-              aria-label="Dark Admin Dashboard (opens in new tab)">here.</a
-            >
-          </p>
-          <div
-            class="mb-10 flex w-full items-center justify-center gap-3 sm:w-auto lg:justify-start"
-          >
-            <label for="footer-email" class="sr-only">Email address</label>
-            <input
-              type="email"
-              id="footer-email"
-              placeholder="Your email address"
-              class="form-input h-12 py-0 text-sm sm:!w-56 md:!w-52 xl:!w-60"
-            />
-            <button
-              class="text-primaryText bg-primaryColor h-12 cursor-pointer rounded-xl px-5 text-sm font-semibold transition hover:bg-[#7274f3]"
-              type="button"
-              data-open-modal
-              aria-label="Subscribe to newsletter"
-            >
-              Subscribe
-            </button>
-          </div>
-          <div class="flex justify-center lg:justify-start">
-            <a
-              href="#"
-              class="outlined-button border-mainBorderSubtle mr-2 inline-block h-10 w-10 cursor-pointer p-2 pt-[0.55rem]"
-              aria-label="Facebook"
-            >
-              <FacebookIcon />
-            </a>
-            <a
-              href="#"
-              class="outlined-button border-mainBorderSubtle mr-2 inline-block h-10 w-10 cursor-pointer p-2 pt-[0.55rem] pl-[0.55rem]"
-              aria-label="Twitter"
-            >
-              <TwitterIcon />
-            </a>
-            <a
-              href="#"
-              class="outlined-button border-mainBorderSubtle mr-2 inline-block h-10 w-10 cursor-pointer p-2 pt-[0.55rem] pl-[0.55rem]"
-              aria-label="Instagram"
-            >
-              <InstagramIcon />
-            </a>
-          </div>
+<footer class="site-footer" aria-label="Site footer">
+
+  <!-- Top wave divider -->
+  <div class="footer-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#13141a"/>
+    </svg>
+  </div>
+
+  <div class="footer-body">
+    <div class="footer-container">
+
+      <!-- ── Col 1: Brand ── -->
+      <div class="footer-brand">
+        <a href="#home" class="brand-logo-wrap" aria-label="Umar & Company Home">
+          <Image src={logo} alt="Umar & Company Logo" width={140} height={56} class="brand-logo" loading="lazy"/>
+        </a>
+        <p class="brand-desc">
+          Trusted industrial contractor since 1990. We deliver end-to-end solutions —
+          from mechanical installation and material supply to thermal insulation and structural work,
+          serving national &amp; international clients with excellence.
+        </p>
+        <!-- Social -->
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><FacebookIcon /></a>
+          <a href="#" class="social-btn" aria-label="Twitter"><TwitterIcon /></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><InstagramIcon /></a>
         </div>
       </div>
+
+      <!-- ── Col 2: Services ── -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Our Services</h3>
+        <ul class="footer-list">
+          {services.map(s => (
+            <li><a href="#services" class="footer-link">
+              <span class="link-dot" aria-hidden="true"></span>{s}
+            </a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- ── Col 3: Quick Links ── -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Quick Links</h3>
+        <ul class="footer-list">
+          {quickLinks.map(l => (
+            <li><a href={l.href} class="footer-link">
+              <span class="link-dot" aria-hidden="true"></span>{l.label}
+            </a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- ── Col 4: Contact ── -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Contact Us</h3>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </span>
+            <span>Lahore, Punjab, Pakistan</span>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </span>
+            <span>+92 300 0000000</span>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </span>
+            <span>info@umarandcompany.com</span>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+            <span>Mon – Sat: 9:00 AM – 6:00 PM</span>
+          </li>
+        </ul>
+
+        <!-- Est. badge -->
+        <div class="est-badge">
+          <span class="est-year">1990</span>
+          <span class="est-label">Established</span>
+        </div>
+      </div>
+
     </div>
-      <p class="text-white text-center w-full">&copy; 2026. All right reserved by <a class="font-bold" target="_blank" href="https://github.com/matt765/">matt765</a> • Distributed by <a class="font-bold" target="_blank" href="https://themewagon.com">ThemeWagon</a></p>
   </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="footer-container footer-bottom-inner">
+      <p class="copy-text">
+        &copy; {new Date().getFullYear()} <strong>Umar &amp; Company</strong>. All rights reserved.
+      </p>
+      <p class="copy-sub">
+        Trusted Industrial Contractor Since 1990
+      </p>
+    </div>
+  </div>
+
 </footer>
+
+<style>
+  /* ── Footer base ── */
+  .site-footer {
+    background: #13141a;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── Wave ── */
+  .footer-wave {
+    display: block;
+    line-height: 0;
+    overflow: hidden;
+    background: #17181b; /* matches section above */
+  }
+  .footer-wave svg { display:block; width:100%; height:60px; }
+
+  /* ── Body ── */
+  .footer-body {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 3rem;
+  }
+  @media (max-width: 1024px) {
+    .footer-container { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  }
+  @media (max-width: 600px) {
+    .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  /* ── Brand col ── */
+  .brand-logo-wrap { display:inline-block; margin-bottom:1.25rem; }
+  .brand-logo { height:52px; width:auto; object-fit:contain; }
+  .brand-desc {
+    color: #6b7280;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: 320px;
+  }
+
+  /* Social */
+  .social-row { display:flex; gap:10px; }
+  .social-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    display: flex; align-items:center; justify-content:center;
+    color: #9ca3af;
+    transition: border-color 0.25s, background 0.25s, color 0.25s, transform 0.25s;
+  }
+  .social-btn:hover {
+    border-color: rgba(184,119,22,0.5);
+    background: rgba(184,119,22,0.1);
+    color: #b87716;
+    transform: translateY(-2px);
+  }
+
+  /* ── Col headings ── */
+  .footer-col-title {
+    font-family: 'Playfair Display','Georgia',serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(184,119,22,0.25);
+    position: relative;
+  }
+  .footer-col-title::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 36px; height: 2px;
+    background: #b87716;
+    border-radius: 2px;
+  }
+
+  /* ── Lists ── */
+  .footer-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .footer-link {
+    display: flex; align-items: center; gap: 8px;
+    color: #6b7280; font-size: 0.88rem;
+    text-decoration: none;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .footer-link:hover { color: #b87716; gap: 12px; }
+  .link-dot {
+    display: inline-block; width: 4px; height: 4px;
+    border-radius: 50%; background: #b87716;
+    opacity: 0.5; flex-shrink: 0;
+    transition: opacity 0.2s;
+  }
+  .footer-link:hover .link-dot { opacity: 1; }
+
+  /* ── Contact ── */
+  .contact-list {
+    list-style: none; padding: 0; margin: 0 0 1.5rem;
+    display: flex; flex-direction: column; gap: 0.85rem;
+  }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    color: #6b7280; font-size: 0.88rem; line-height: 1.5;
+  }
+  .contact-icon {
+    color: #b87716; flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* Est. badge */
+  .est-badge {
+    display: inline-flex; flex-direction: column; align-items: center;
+    background: rgba(184,119,22,0.08);
+    border: 1px solid rgba(184,119,22,0.2);
+    border-radius: 12px; padding: 0.6rem 1.2rem;
+  }
+  .est-year {
+    font-family: 'Playfair Display','Georgia',serif;
+    font-size: 1.5rem; font-weight: 800;
+    color: #b87716; line-height: 1;
+  }
+  .est-label {
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: #6b7280; margin-top: 2px;
+  }
+
+  /* ── Bottom bar ── */
+  .footer-bottom { padding: 1.25rem 0; }
+  .footer-bottom-inner {
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .copy-text {
+    color: #4b5563; font-size: 0.85rem;
+  }
+  .copy-text strong { color: #9ca3af; }
+  .copy-sub {
+    color: #374151; font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+</style>

@@ -2,61 +2,180 @@
 import { Image } from 'astro:assets';
 import feature5 from '../assets/images/feature5.jpg';
 import feature6 from '../assets/images/feature6.jpg';
-import CheckArrowIcon from '../assets/icons/CheckArrowIcon.astro';
+import feature7 from '../assets/images/feature7.jpg';
+import feature8 from '../assets/images/feature8.jpg';
+
+const projects = [
+  { image: feature5, name: 'NESTLE MILK PACK LTD SHEIKHPURA' },
+  { image: feature6, name: 'NISHAT GROUP OF INDUSTRIES' },
+  { image: feature7, name: 'SAPPHIRE GROUP' },
+  { image: feature8, name: 'PEPSICO PVT LTD SUNDAR ESTATE LAHORE' },
+];
 ---
 
-<section class="bg-bgDark2 mt-12 mb-12 w-full pt-4 sm:mt-24 lg:my-20 lg:mb-24">
-  <div class="fade-in">
-    <div
-      class="mx-auto flex w-11/12 flex-wrap items-center md:pl-4 xl:w-[81.25rem] xl:pr-16 xl:pl-16 2xl:w-[90.625rem]"
-    >
-      <div
-        class="order-last mx-auto flex w-11/12 flex-wrap justify-center sm:w-3/4 sm:pr-8 lg:order-first lg:-mx-4 lg:w-1/2"
-      >
-        <div class="mb-8 flex w-full flex-col justify-center px-2 md:pl-8 lg:mb-0 lg:pl-16">
-          <div class="mb-4 rounded py-3 md:pr-20 md:pl-3 lg:pr-12">
-            <div class="relative">
-              <Image
-                src={feature5}
-                alt="Feature image 5"
-                class="image-border rounded-xl"
-                loading="eager"
-                decoding="sync"
-              />
-              <div class="pointer-events-none absolute inset-0 rounded-xl bg-black/10"></div>
-            </div>
+<section class="bg-bgDark1   w-full pt-10 pb-16 ">
+  <div class="mx-auto w-11/12 xl:w-[81.25rem] 2xl:w-[90.625rem]">
+
+    <!-- Heading -->
+   <div class="mb-12 text-center">
+  <span class="block-subtitle" style="color:#b87716;">What We've Built</span>
+  <h2 class="block-big-title mt-4" style="font-family:'Playfair Display','Georgia',serif; font-weight:800; font-size:clamp(2.2rem,5vw,4rem); line-height:1.1;">
+    Our Projects
+  </h2>
+</div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {projects.map((project, i) => (
+        <div
+          class="project-card opacity-0 translate-y-10 transition-all duration-700"
+          style={`transition-delay: ${i * 200}ms`}
+        >
+          <div class="overflow-hidden rounded-2xl">
+            <Image
+              src={project.image}
+              alt={project.name}
+              class="h-72 w-full object-cover rounded-2xl"
+              loading="eager"
+            />
           </div>
-          <div class="rounded py-3 md:pr-2 md:pl-20 lg:pl-12">
-            <div class="relative">
-              <Image
-                src={feature6}
-                alt="Feature image 6"
-                class="image-border rounded-xl"
-                loading="eager"
-                decoding="sync"
-              />
-              <div class="pointer-events-none absolute inset-0 rounded-xl bg-black/10"></div>
-            </div>
-          </div>
+          <h3 class="mt-4 text-center text-lg font-semibold text-white">{project.name}</h3>
         </div>
-      </div>
-      <div class="mb-12 w-full lg:mb-0 lg:w-1/2 xl:pl-8">
-        <div class="lg:w-unset mx-auto w-11/12 sm:w-4/5 md:w-3/4 lg:mx-auto">
-          <span class="block-subtitle">Make Data-Driven Decisions</span>
-          <h2 class="block-big-title mt-6 mb-8 text-4xl lg:text-5xl">
-            Issue tracking you'll enjoy using
-          </h2>
-          <p class="text-secondaryText mb-12 leading-loose">
-            Monitor and track data issues with ease using our intuitive and efficient issue tracking
-            system. Stay ahead of potential problems and improve your workflow.
-          </p>
-          <ul class="text-primaryText mb-6">
-            <li class="mb-4 flex"><CheckArrowIcon /><span>Collaborative environment</span></li>
-            <li class="mb-4 flex"><CheckArrowIcon /><span>Smart issue categorization</span></li>
-            <li class="mb-4 flex"><CheckArrowIcon /><span>Customizable notifications</span></li>
-          </ul>
-        </div>
-      </div>
+      ))}
     </div>
+
+    <!-- Load More Button -->
+    <div class="mt-12 flex justify-center">
+   <button
+  onclick="window.location.href='/umar&company/projects'"
+  class="load-more-btn"
+>
+  <span class="load-more-btn__text">Load More</span>
+  <span class="load-more-btn__icon" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </span>
+  <span class="load-more-btn__ripple" aria-hidden="true"></span>
+</button>
+    </div>
+
   </div>
 </section>
+<style>
+  .load-more-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 3rem;
+    width: 12rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    background: ;
+    border: 1.5px solid #e09a31;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.3s, border-color 0.3s;
+    outline: none;
+  }
+ 
+  /* Sliding blue shine on hover */
+  .load-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(96,165,250,0.25) 50%,
+      transparent 100%
+    );
+    transition: left 0.5s ease;
+    z-index: 0;
+  }
+ 
+  /* Bottom glow bar */
+  .load-more-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 2px;
+    background: #e09a31;
+    border-radius: 2px;
+    transition: transform 0.35s ease;
+    z-index: 0;
+  }
+ 
+  .load-more-btn:hover::before {
+    left: 100%;
+  }
+ 
+  .load-more-btn:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+ 
+  .load-more-btn:hover {
+    border-color: #60a5fa;
+    background: #e09a31;
+  }
+ 
+  /* Arrow bounces down on hover */
+  .load-more-btn__text,
+  .load-more-btn__icon {
+    position: relative;
+    z-index: 1;
+  }
+ 
+  .load-more-btn__icon {
+    display: flex;
+    align-items: center;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+ 
+  .load-more-btn:hover .load-more-btn__icon {
+    transform: translateY(4px);
+  }
+ 
+  /* Click press effect */
+  .load-more-btn:active {
+    transform: scale(0.97);
+  }
+</style>
+ 
+
+
+
+
+
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('.project-card');
+          cards.forEach((card) => {
+            card.classList.remove('opacity-0', 'translate-y-10');
+            card.classList.add('opacity-100', 'translate-y-0');
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  const section = document.querySelector('.project-card')?.closest('section');
+  if (section) observer.observe(section);
+</script>

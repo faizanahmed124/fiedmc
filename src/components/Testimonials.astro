@@ -1,261 +1,316 @@
 ---
-/**
- * Testimonials - Infinite horizontal marquee
- * Two rows scrolling in opposite directions, continuous loop.
- */
-import { Image } from 'astro:assets';
-import testimonial1 from '../assets/images/testimonial1.png';
-import testimonial2 from '../assets/images/testimonial2.png';
-import testimonial3 from '../assets/images/testimonial3.png';
-
 const row1 = [
-  {
-    name: 'John Watkins',
-    title: 'Founder of Dashflow',
-    content:
-      'The powerful analytic tools have helped us streamline our processes and make data-driven decisions that positively impact our efficiency.',
-    image: testimonial1,
-    rating: 5,
-  },
-  {
-    name: 'Sarah Chen',
-    title: 'CTO at Moonrise',
-    content:
-      'We switched to Tailcast from a legacy analytics suite and the difference was night and day. The dashboard is intuitive and lightning fast.',
-    image: testimonial2,
-    rating: 5,
-  },
-  {
-    name: 'Mark Rodriguez',
-    title: 'Head of Product at Vortex',
-    content:
-      'What sets Tailcast apart is its ability to turn complex datasets into clear, actionable insights. Our product team uses it daily.',
-    image: testimonial3,
-    rating: 5,
-  },
-  {
-    name: 'Elena Vasquez',
-    title: 'Lead Engineer at Prism',
-    content:
-      'Onboarding was seamless. Our non-technical team members were creating their own dashboards within the first week. Unheard of in this space.',
-    image: testimonial1,
-    rating: 5,
-  },
-  {
-    name: 'David Park',
-    title: 'CEO at NovaTech',
-    content:
-      'We cut our reporting time by 80%. What used to take a full day now happens automatically before the morning standup.',
-    image: testimonial2,
-    rating: 5,
-  },
+  { name: "Nestle Milk Pack Ltd.",        location: "KabirWala",             abbr: "NM", color: "#3b82f6" },
+  { name: "Nestle Milk Pack Ltd.",        location: "Sheikhupura",           abbr: "NM", color: "#06b6d4" },
+  { name: "Nishat Group of Industries",   location: "Sheikh Fazl Road",      abbr: "NG", color: "#8b5cf6" },
+  { name: "Nishat Group of Industries",   location: "Chunnian",              abbr: "NG", color: "#a78bfa" },
+  { name: "Sapphire Group's",             location: "Lahore",                abbr: "SG", color: "#f59e0b" },
+  { name: "Atlas Honda PVT Ltd.",         location: "Sheikhupura",           abbr: "AH", color: "#10b981" },
+  { name: "Bhanero Power Ltd.",           location: "Faisalabad",            abbr: "BP", color: "#ef4444" },
 ];
 
 const row2 = [
-  {
-    name: 'Olivia Grant',
-    title: 'Data Lead at Helix',
-    content:
-      "Finally an analytics tool that doesn't feel like it was designed in 2010. Dark mode, fast UI, and data that actually makes sense to the whole team.",
-    image: testimonial3,
-    rating: 5,
-  },
-  {
-    name: 'James Thornton',
-    title: 'PM at NexaFlow',
-    content:
-      'The API is beautifully designed. We integrated Tailcast into our CI/CD pipeline in under an hour. That never happens with analytics tools.',
-    image: testimonial1,
-    rating: 5,
-  },
-  {
-    name: 'Amara Osei',
-    title: 'VP Engineering at Arcline',
-    content:
-      'Tailcast handles billions of events without breaking a sweat. Our real-time dashboards have never been faster, even at 10x our original scale.',
-    image: testimonial2,
-    rating: 5,
-  },
-  {
-    name: 'Ryan Mitchell',
-    title: 'CTO at Streamline',
-    content:
-      'The custom reporting alone justified the switch. We went from spending hours in spreadsheets to having everything automated and beautifully presented.',
-    image: testimonial3,
-    rating: 5,
-  },
-  {
-    name: 'Sofia Kim',
-    title: 'Head of Growth at Prism',
-    content:
-      "I've evaluated dozens of analytics platforms. Tailcast is the only one where our entire team - engineers and non-engineers - actually enjoys using it.",
-    image: testimonial1,
-    rating: 5,
-  },
+  { name: "Crescent Limited",             location: "Lahore",                abbr: "CL", color: "#ec4899" },
+  { name: "B.B. Jan PVT Ltd.",            location: "Lahore",                abbr: "BB", color: "#3b82f6" },
+  { name: "PEPSICO PVT Ltd.",             location: "Sundar Estate, Lahore", abbr: "PC", color: "#10b981" },
+  { name: "AHN Group",                    location: "Sheikhupura",           abbr: "AH", color: "#f59e0b" },
+  { name: "AHN Steel",                    location: "Sheikhupura",           abbr: "AS", color: "#06b6d4" },
+  { name: "Ghani Float Glass Ltd.",       location: "Lahore",                abbr: "GG", color: "#8b5cf6" },
+  { name: "Sapphire Finishing Mills",     location: "Lahore",                abbr: "SF", color: "#ef4444" },
 ];
 ---
 
-<section class="bg-bgDark2 w-full overflow-hidden pt-8 pb-8 lg:pt-16 lg:pb-12">
+<section class="bg-bgDark2 w-full overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-28">
   <div class="fade-in">
-    <div class="block-subtitle mb-6 text-center">Testimonials</div>
-    <div class="block-big-title mb-16 px-8 text-center sm:px-24 md:px-48">
-      Loved by thousands of users
+
+    <!-- ── Header ── -->
+    <div class="content-container mb-14 text-center">
+      <span class="block-subtitle mb-5 block">+ TRUSTED BY INDUSTRY LEADERS +</span>
+      <h2 class="block-big-title mb-5" style=" font-weight:800; font-size:clamp(2.2rem,5vw,4rem); line-height:1.15;">
+        Our <span class="text-yellow-500">Clients</span>
+      </h2>
+      <p class="text-secondaryText mx-auto max-w-lg text-base leading-relaxed">
+        Proud partners of Pakistan's most prominent industrial, manufacturing,
+        and energy sector organisations.
+      </p>
     </div>
 
-    <!-- Row 1 - scrolls left -->
-    <div class="marquee-container mb-6">
-      <div class="marquee-track marquee-left">
-        {
-          [...row1, ...row1].map((t, i) => (
-            <div
-              class="marquee-card group card"
-              {...(i >= row1.length ? { 'aria-hidden': 'true' } : {})}
-            >
-              <div class="mb-4 flex gap-0.5" role="img" aria-label={`${t.rating} out of 5 stars`}>
-                {Array.from({ length: t.rating }).map(() => (
-                  <svg
-                    class="text-secondaryColor fill-secondaryColor h-4 w-4"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-                  </svg>
-                ))}
-              </div>
-              <p class="text-primaryText mb-6 text-[0.95rem] leading-relaxed">"{t.content}"</p>
-              <div class="mt-auto flex items-center gap-3">
-                <Image
-                  src={t.image}
-                  alt={t.name}
-                  width={40}
-                  height={40}
-                  class="ring-mainBorderDarker rounded-full ring-1"
-                  loading="eager"
-                  decoding="sync"
-                />
-                <div>
-                  <div class="text-primaryText text-sm font-semibold">{t.name}</div>
-                  <div class="text-secondaryText text-xs">{t.title}</div>
-                </div>
-              </div>
+    <!-- ── Row 1 ── -->
+    <div class="marquee-wrap mb-5">
+      <div class="marquee-track scroll-left">
+        {[...row1, ...row1].map((c, i) => (
+          <article
+            class="client-card"
+            style={`--accent:${c.color}`}
+            {...(i >= row1.length ? { 'aria-hidden': 'true' } : {})}
+          >
+            <!-- Accent top bar -->
+            <div class="accent-bar" />
+
+            <!-- Logo -->
+            <div class="logo-box">
+              <span class="logo-abbr">{c.abbr}</span>
             </div>
-          ))
-        }
+
+            <!-- Name -->
+            <p class="company-name">{c.name}</p>
+
+            <!-- Location -->
+            <p class="company-loc">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5"
+                style="display:inline;vertical-align:middle;margin-right:3px">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              {c.location}
+            </p>
+
+            <!-- Verified -->
+            <div class="verified-badge">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Verified Client
+            </div>
+          </article>
+        ))}
       </div>
     </div>
 
-    <!-- Row 2 - scrolls right -->
-    <div class="marquee-container">
-      <div class="marquee-track marquee-right">
-        {
-          [...row2, ...row2].map((t, i) => (
-            <div
-              class="marquee-card group card"
-              {...(i >= row2.length ? { 'aria-hidden': 'true' } : {})}
-            >
-              <div class="mb-4 flex gap-0.5" role="img" aria-label={`${t.rating} out of 5 stars`}>
-                {Array.from({ length: t.rating }).map(() => (
-                  <svg
-                    class="text-secondaryColor fill-secondaryColor h-4 w-4"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-                  </svg>
-                ))}
-              </div>
-              <p class="text-primaryText mb-6 text-[0.95rem] leading-relaxed">"{t.content}"</p>
-              <div class="mt-auto flex items-center gap-3">
-                <Image
-                  src={t.image}
-                  alt={t.name}
-                  width={40}
-                  height={40}
-                  class="ring-mainBorderDarker rounded-full ring-1"
-                  loading="eager"
-                  decoding="sync"
-                />
-                <div>
-                  <div class="text-primaryText text-sm font-semibold">{t.name}</div>
-                  <div class="text-secondaryText text-xs">{t.title}</div>
-                </div>
-              </div>
+    <!-- ── Row 2 ── -->
+    <div class="marquee-wrap">
+      <div class="marquee-track scroll-right">
+        {[...row2, ...row2].map((c, i) => (
+          <article
+            class="client-card"
+            style={`--accent:${c.color}`}
+            {...(i >= row2.length ? { 'aria-hidden': 'true' } : {})}
+          >
+            <div class="accent-bar" />
+            <div class="logo-box">
+              <span class="logo-abbr">{c.abbr}</span>
             </div>
-          ))
-        }
+            <p class="company-name">{c.name}</p>
+            <p class="company-loc">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5"
+                style="display:inline;vertical-align:middle;margin-right:3px">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              {c.location}
+            </p>
+            <div class="verified-badge">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Verified Client
+            </div>
+          </article>
+        ))}
       </div>
     </div>
 
-    <!-- Fade edges -->
-    <style>
-      .marquee-container {
-        position: relative;
-        width: 100%;
-      }
-      .marquee-container::before,
-      .marquee-container::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 120px;
-        z-index: 10;
-        pointer-events: none;
-      }
-      .marquee-container::before {
-        left: 0;
-        background: linear-gradient(to right, rgb(30, 31, 35) 0%, transparent 100%);
-      }
-      .marquee-container::after {
-        right: 0;
-        background: linear-gradient(to left, rgb(30, 31, 35) 0%, transparent 100%);
-      }
+    <!-- ── Stats ── -->
+    <div class="content-container mt-16">
+      <div class="stats-grid">
+        {[
+          { value: "14+",  label: "Clients Served" },
+          { value: "50+",  label: "Projects Completed" },
+          { value: "10+",  label: "Years Experience" },
+          { value: "100%", label: "Client Satisfaction" },
+        ].map(s => (
+          <div class="stat-cell">
+            <span class="stat-num">{s.value}</span>
+            <span class="stat-lbl">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
 
-      .marquee-track {
-        display: flex;
-        gap: 1.5rem;
-        width: max-content;
-      }
-
-      .marquee-left {
-        animation: marqueeLeft 60s linear infinite;
-      }
-      .marquee-right {
-        animation: marqueeRight 60s linear infinite;
-      }
-
-      .marquee-container:hover .marquee-track {
-        animation-play-state: paused;
-      }
-
-      @keyframes marqueeLeft {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-      @keyframes marqueeRight {
-        0% {
-          transform: translateX(-50%);
-        }
-        100% {
-          transform: translateX(0);
-        }
-      }
-
-      .marquee-card {
-        flex-shrink: 0;
-        width: 360px;
-        padding: 1.5rem;
-        border-radius: 1.25rem;
-        display: flex;
-        flex-direction: column;
-        transition:
-          border-color 0.5s ease,
-          background-color 0.5s ease;
-      }
-    </style>
   </div>
 </section>
+
+<style>
+  /* ── Marquee wrapper ── */
+  .marquee-wrap {
+    position: relative;
+    width: 100%;
+  }
+  .marquee-wrap::before,
+  .marquee-wrap::after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    width: 180px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .marquee-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, #1a1b22, transparent);
+  }
+  .marquee-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, #1a1b22, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 1.25rem;
+    width: max-content;
+    padding: 1rem 0;
+  }
+
+  .scroll-left  { animation: scrollLeft  60s linear infinite; }
+  .scroll-right { animation: scrollRight 60s linear infinite; }
+  .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+  @keyframes scrollLeft  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+  @keyframes scrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+  /* ── Card — square, big ── */
+  .client-card {
+    flex-shrink: 0;
+    width: 220px;
+    height: 220px;
+    border-radius: 18px;
+    background: #1c1d27;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.5rem 1.25rem 1.25rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+    cursor: default;
+  }
+
+  /* Subtle radial glow behind */
+  .client-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 50% 0%,
+      color-mix(in srgb, var(--accent) 12%, transparent) 0%,
+      transparent 65%);
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  .client-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.45),
+                0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+  .client-card:hover::before { opacity: 1; }
+
+  /* Top accent bar */
+  .accent-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 18px 18px 0 0;
+    opacity: 0.8;
+  }
+
+  /* Logo circle */
+  .logo-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    border: 1.5px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-abbr {
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+
+  /* Company name — full, no truncation */
+  .company-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    line-height: 1.4;
+    margin: 0;
+    word-break: break-word;
+  }
+
+  /* Location */
+  .company-loc {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.38);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* Verified badge */
+  .verified-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #10b981;
+    background: #10b98114;
+    border: 1px solid #10b98128;
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin-top: 0.2rem;
+  }
+
+  /* ── Stats ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .stat-cell {
+    background: #1c1d27;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 2rem 1rem;
+    transition: background 0.3s;
+  }
+  .stat-cell:hover { background: #21222e; }
+  .stat-num {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    line-height: 1;
+  }
+  .stat-lbl {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+</style>

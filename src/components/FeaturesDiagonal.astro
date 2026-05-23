@@ -3,59 +3,333 @@ import { Image } from 'astro:assets';
 import featuresdiagonal from '../assets/images/featuresdiagonal.jpg';
 ---
 
-<section class="bg-bgDark1 flex w-full flex-col items-center justify-center">
-  <div class="shape-divider-bottom-1665696614">
-    <svg
-      data-name="Layer 1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1200 120"
-      preserveAspectRatio="none"
-      class="bg-bgDark2 fill-bgDark2"
-    >
-      <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="bg-bgDark1 fill-bgDark1"></path>
-    </svg>
-  </div>
-  <div class="fade-in bg-bgDark1 w-full">
-    <div
-      class="bg-bgDark1 mx-auto flex flex-col justify-center pt-12 pb-8 md:w-4/5 lg:flex-row lg:pt-24 lg:pb-20 xl:w-[1050px] 2xl:w-[1150px]"
-    >
-      <div class="lg:mx-unset mx-auto flex w-3/4 flex-col lg:w-1/2">
-        <span class="block-subtitle">Accelerate Your Success</span>
-        <h2 class="block-big-title mt-10 mb-8 text-4xl lg:text-5xl">
-          Build &amp; Launch without problems
-        </h2>
-        <p class="text-secondaryText mb-16 leading-loose">
-          Our platform enables you to launch your data-driven projects with ease. Boost productivity
-          and achieve better results. Empower your decision-making with advanced analytics
-        </p>
-        <button
-          class="contained-button mr-10 h-12 w-[210px]"
-          data-open-modal
-          aria-label="Get started"
-        >
-          Get Started
-        </button>
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" /> -->
+
+<section id="mission" class="mv-section">
+
+  <!-- Dark grid line background -->
+  <div class="mv-grid" aria-hidden="true"></div>
+
+  <!-- Glow blobs -->
+  <div class="mv-blob mv-blob--tl" aria-hidden="true"></div>
+  <div class="mv-blob mv-blob--br" aria-hidden="true"></div>
+
+  <div class="mv-container">
+
+    <!-- LEFT: Text Content -->
+    <div class="mv-content">
+
+      <div class="mv-eyebrow">
+        <span class="mv-eyebrow__dot"></span>
+        Our Purpose
+        <span class="mv-eyebrow__dot"></span>
       </div>
-      <div class="mx-auto flex w-4/5 justify-center pt-16 lg:w-1/2 lg:pt-0 lg:pl-16">
-        <Image
-          src={featuresdiagonal}
-          alt="Feature image"
-          class="main-border-gray rounded-xl"
-          loading="eager"
-          decoding="sync"
-        />
+
+      <h2 class="mv-heading">
+        Mission &amp;<br/>
+        <span class="mv-heading--accent">Vision</span>
+      </h2>
+
+      <p class="mv-body">
+        Since 1990, we have built Pakistan's skyline with unmatched precision and dedication.
+        Our mission is to deliver construction excellence that stands the test of time —
+        structures built not just with steel and concrete, but with integrity and craft.
+      </p>
+
+      <p class="mv-body">
+        Our vision is a Pakistan where every building reflects world-class standards.
+        We empower our trained workforce, embrace modern techniques, and uphold
+        the trust our clients place in us — project after project, city after city.
+      </p>
+
+      <!-- Stats row -->
+      <div class="mv-stats">
+        <div class="mv-stat">
+          <span class="mv-stat__num">35+</span>
+          <span class="mv-stat__label">Years Experience</span>
+        </div>
+        <div class="mv-stat__divider"></div>
+        <div class="mv-stat">
+          <span class="mv-stat__num">500+</span>
+          <span class="mv-stat__label">Projects Completed</span>
+        </div>
+        <div class="mv-stat__divider"></div>
+        <div class="mv-stat">
+          <span class="mv-stat__num">100%</span>
+          <span class="mv-stat__label">FBR &amp; PRA Verified</span>
+        </div>
+      </div>
+
+      <a href="#contact" class="mv-btn">
+        Get Started
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <!-- RIGHT: Image + floating badge -->
+    <div class="mv-image-wrap">
+      <div class="mv-image-frame">
+      <Image
+  src={featuresdiagonal}
+  alt="Feature image"
+  class="mv-image"
+/>
+        <div class="mv-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div>
+            <p class="mv-badge__title">Government Verified</p>
+            <p class="mv-badge__sub">FBR &amp; PRA Certified</p>
+          </div>
+        </div>
+        <div class="mv-corner" aria-hidden="true"></div>
       </div>
     </div>
-  </div>
-  <div class="shape-divider-top-1665696661 w-full">
-    <svg
-      data-name="Layer 1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1200 120"
-      preserveAspectRatio="none"
-      class="bg-bgDark2 fill-bgDark2"
-    >
-      <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="bg-bgDark1 fill-bgDark1"></path>
-    </svg>
+
   </div>
 </section>
+
+<style>
+  .mv-section {
+    position: relative;
+    background: #17181b;
+    width: 100%;
+    padding: 6rem 1.5rem;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Grid lines background */
+  /* .mv-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  } */
+
+  /* Glow blobs */
+  /* .mv-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .mv-blob--tl {
+    width: 500px; height: 500px;
+    top: -200px; left: -200px;
+    background: rgba(26, 79, 160, 0.18);
+  }
+  .mv-blob--br {
+    width: 400px; height: 400px;
+    bottom: -150px; right: -150px;
+    background: rgba(55, 138, 221, 0.12);
+  } */
+
+  /* layout */
+  .mv-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .mv-container {
+      flex-direction: row;
+      gap: 5rem;
+      align-items: center;
+    }
+  }
+
+  .mv-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mv-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #dd8f1b;
+    margin-bottom: 1.2rem;
+  }
+  .mv-eyebrow__dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #dd8f1b;
+    opacity: 0.6;
+  }
+
+  .mv-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #ffffff;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .mv-heading--accent {
+    color: #dd8f1b;
+    font-style: italic;
+  }
+
+  .mv-body {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    color: #94a3b8;
+    margin: 0 0 1rem;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  /* stats */
+  .mv-stats {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0 2.5rem;
+    padding: 1.5rem 2rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(221, 143, 27, 0.2);
+    border-radius: 16px;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .mv-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .mv-stat__num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #dd8f1b;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+  .mv-stat__label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    font-weight: 500;
+  }
+  .mv-stat__divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(96,165,250,0.2);
+    flex-shrink: 0;
+  }
+
+  /* button */
+  .mv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #dd8f1b;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .mv-btn:hover {
+    background: #dd8f1b;
+    transform: translateY(-2px);
+  }
+  .mv-btn svg { transition: transform 0.2s; }
+  .mv-btn:hover svg { transform: translateX(4px); }
+
+  /* image */
+  .mv-image-wrap {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .mv-image-frame {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 24px;
+    overflow: visible;
+  }
+  .mv-image {
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    border-radius: 24px;
+    display: block;
+    background: linear-gradient(135deg, #0b2a5c, #1a4fa0);
+  }
+
+  /* floating badge */
+  .mv-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    left: -1.5rem;
+    background: #12121e;
+    border: 1px solid rgba(96,165,250,0.25);
+    border-radius: 16px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 220px;
+    z-index: 2;
+  }
+  .mv-badge svg {
+    color: #dd8f1b;
+    flex-shrink: 0;
+    width: 24px; height: 24px;
+  }
+  .mv-badge__title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.3;
+  }
+  .mv-badge__sub {
+    font-size: 0.72rem;
+    color: #dd8f1b;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* blue corner accent */
+  .mv-corner {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 100px;
+    height: 100px;
+    border-top: 3px solid #dd8f1b;
+    border-right: 3px solid #dd8f1b;
+    border-radius: 0 24px 0 0;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 2;
+  }
+</style>

@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://themewagon.github.io/tailcast',
-  base: '/tailcast',
+  base: '/',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

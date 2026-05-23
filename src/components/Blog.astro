@@ -1,129 +1,217 @@
 ---
-import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+import img1  from '../assets/images/image1.jpeg';
+import img2  from '../assets/images/image2.jpeg';
+import img3  from '../assets/images/image3.jpeg';
+import img4  from '../assets/images/image4.jpeg';
+import img5  from '../assets/images/image5.jpeg';
+import img6  from '../assets/images/image6.jpeg';
+import img7  from '../assets/images/image7.jpeg';
+import img8  from '../assets/images/image8.jpeg';
+import img9  from '../assets/images/image9.jpeg';
+import img10 from '../assets/images/image10.jpeg';
+import img11 from '../assets/images/image11.jpeg';
+import img12 from '../assets/images/image12.jpeg';
+import img15 from '../assets/images/image15.jpeg';
+import img16 from '../assets/images/image16.jpeg';
+import img17 from '../assets/images/image17.jpeg';
+import img18 from '../assets/images/image18.jpeg';
+import img19 from '../assets/images/image19.jpeg';
+import img20 from '../assets/images/image20.jpeg';
 
-const featuredPost = posts[0];
-const sidebarPosts = posts.slice(1, 4);
-const allPosts = posts.slice(0, 4);
-
-const formatDate = (date: Date) =>
-  date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+// Row 1 — 10 images (left scroll)
+const row1 = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+// Row 2 — 8 images (right scroll)
+const row2 = [img11, img12, img15, img16, img17, img18, img19, img20];
 ---
 
-<section class="bg-bgDark2 relative mt-20 flex w-full justify-center">
-  <div class="absolute -top-16" id="blog"></div>
-  <div class="content-container bg-bgDark2 pt-4 pb-0">
-    <div class="fade-in">
-      <div class="mb-20">
-        <div class="mx-auto mb-16 max-w-2xl text-center lg:mr-0 lg:ml-0 lg:text-left">
-          <span class="block-subtitle">Our Blog</span>
-          <h2 class="font-heading text-primaryText mt-6 mb-6 text-4xl font-bold lg:text-5xl">
-            Latest Insights
-          </h2>
-          <p class="text-secondaryText mb-6">
-            Stay updated with the latest trends and insights in our industry.
-          </p>
-        </div>
+<section class="gallery-section" id="gallery">
 
-        <!-- Desktop layout (lg+): featured + sidebar -->
-        <div class="hidden h-auto flex-row gap-8 lg:flex lg:h-[28rem] xl:h-[32rem]">
-          <!-- Featured post (left) -->
-          <a href={`/tailcast/blog/${featuredPost.id}`} class="group h-full lg:w-3/5">
-            <article class="card flex h-full flex-col overflow-hidden rounded-3xl transition">
-              <div class="flex-grow p-4 pb-0">
-                <div class="bg-bgDark1Lighter flex h-full items-center justify-center rounded-2xl">
-                  <svg
-                    class="text-secondaryColor/30 h-32 w-32"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="0.5"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    set:html={featuredPost.data.icon}
-                  />
-                </div>
-              </div>
-              <div class="px-8 pt-5 pb-5">
-                <div class="text-secondaryText mb-1 text-sm">
-                  {formatDate(featuredPost.data.date)}
-                </div>
-                <h3
-                  class="text-primaryText text-2xl font-bold transition group-hover:text-[#c8c9f8]"
-                >
-                  {featuredPost.data.title}
-                </h3>
-                <p class="text-secondaryText mt-2 text-sm leading-relaxed">
-                  {featuredPost.data.subtitle}
-                </p>
-              </div>
-            </article>
-          </a>
+  <!-- Header -->
+  <div class="gallery-header fade-in">
+    <span class="gallery-eyebrow">
+      <span class="gallery-dot"></span>Our Work<span class="gallery-dot"></span>
+    </span>
+    <h2 class="gallery-title">
+      <span class="title-white">Project </span>
+      <span class="title-gold">Gallery</span>
+    </h2>
+    <p class="gallery-sub">A glimpse of our completed projects across industries</p>
+  </div>
 
-          <!-- Sidebar posts (right) -->
-          <div class="flex h-full flex-col gap-5 lg:w-2/5">
-            {
-              sidebarPosts.map((post) => (
-                <a
-                  href={`/tailcast/blog/${post.id}`}
-                  class="group card flex flex-1 items-center gap-4 p-4 transition"
-                >
-                  <div class="bg-bgDark1Lighter flex aspect-square shrink-0 items-center justify-center self-stretch rounded-xl">
-                    <svg
-                      class="text-secondaryColor/40 h-8 w-8"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      set:html={post.data.icon}
-                    />
-                  </div>
-                  <div>
-                    <h3 class="text-primaryText blog-sidebar-title leading-snug font-bold transition group-hover:text-[#c8c9f8]">
-                      {post.data.title}
-                    </h3>
-                    <div class="text-secondaryText mt-3 text-sm">{formatDate(post.data.date)}</div>
-                  </div>
-                </a>
-              ))
-            }
-          </div>
+  <!-- Marquee Row 1 — scrolls LEFT -->
+  <div class="marquee-wrap">
+    <div class="marquee marquee--left">
+      <!-- doubled for seamless loop -->
+      {row1.map((img, i) => (
+        <div class="marquee-card">
+          <Image src={img} alt={`Project ${i + 1}`} class="marquee-img" loading="lazy" />
+          <div class="marquee-overlay"></div>
         </div>
-
-        <!-- Mobile/Tablet layout (< lg): 4 equal cards -->
-        <div class="xs:grid-cols-2 grid grid-cols-1 gap-6 lg:hidden">
-          {
-            allPosts.map((post) => (
-              <a href={`/tailcast/blog/${post.id}`} class="group">
-                <article class="card flex h-full flex-col overflow-hidden rounded-2xl transition">
-                  <div class="p-3 pb-0">
-                    <div class="bg-bgDark1Lighter xs:aspect-auto xs:h-40 flex aspect-[16/9] items-center justify-center rounded-xl">
-                      <svg
-                        class="text-secondaryColor/30 h-16 w-16"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="0.8"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                        set:html={post.data.icon}
-                      />
-                    </div>
-                  </div>
-                  <div class="px-5 pt-4 pb-4">
-                    <div class="text-secondaryText mb-1 text-sm">{formatDate(post.data.date)}</div>
-                    <h3 class="text-primaryText text-lg leading-snug font-bold transition group-hover:text-[#c8c9f8]">
-                      {post.data.title}
-                    </h3>
-                  </div>
-                </article>
-              </a>
-            ))
-          }
+      ))}
+      {row1.map((img, i) => (
+        <div class="marquee-card">
+          <Image src={img} alt={`Project ${i + 1}`} class="marquee-img" loading="lazy" />
+          <div class="marquee-overlay"></div>
         </div>
-      </div>
+      ))}
     </div>
   </div>
+
+  <!-- Marquee Row 2 — scrolls RIGHT -->
+  <div class="marquee-wrap">
+    <div class="marquee marquee--right">
+      {row2.map((img, i) => (
+        <div class="marquee-card">
+          <Image src={img} alt={`Project ${i + 11}`} class="marquee-img" loading="lazy" />
+          <div class="marquee-overlay"></div>
+        </div>
+      ))}
+      {row2.map((img, i) => (
+        <div class="marquee-card">
+          <Image src={img} alt={`Project ${i + 11}`} class="marquee-img" loading="lazy" />
+          <div class="marquee-overlay"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+
 </section>
+
+<style>
+  /* ── Section ── */
+  .gallery-section {
+    background: #17181b;
+    padding: 5rem 0 4rem;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  .gallery-header {
+    text-align: center;
+    padding: 0 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .gallery-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #60a5fa;
+    border: 1px solid rgba(96,165,250,0.25);
+    border-radius: 999px;
+    padding: 6px 18px;
+    background: rgba(96,165,250,0.06);
+    margin-bottom: 1.25rem;
+  }
+  .gallery-dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #60a5fa;
+    opacity: 0.7;
+  }
+  .gallery-title {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-weight: 800;
+    font-size: clamp(2.6rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin: 0.5rem 0 1rem;
+  }
+  .title-white { color: #ffffff; font-style: normal; }
+  .title-gold  { color: #b87716; font-style: italic; }
+  .gallery-sub {
+    font-family: 'DM Sans', sans-serif;
+    color: #94a3b8;
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Marquee wrapper ── */
+  .marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    /* slight tilt for depth */
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+
+  /* ── Marquee track ── */
+  .marquee {
+    display: flex;
+    width: max-content;
+    gap: 1rem;
+    will-change: transform;
+  }
+  .marquee--left  { animation: scrollLeft  35s linear infinite; }
+  .marquee--right { animation: scrollRight 35s linear infinite; }
+
+  /* Pause on hover */
+  .marquee-wrap:hover .marquee { animation-play-state: paused; }
+
+  @keyframes scrollLeft {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes scrollRight {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+
+  /* ── Cards ── */
+  .marquee-card {
+    position: relative;
+    width: 420px;
+    height: 310px;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid rgba(96,165,250,0.12);
+    transition: border-color 0.3s, transform 0.35s cubic-bezier(.22,1,.36,1);
+    cursor: pointer;
+  }
+  .marquee-card:hover {
+    border-color: rgba(184,119,22,0.5);
+    transform: scale(1.04);
+    z-index: 2;
+  }
+
+  /* ── Image ── */
+  .marquee-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(.22,1,.36,1);
+  }
+  .marquee-card:hover .marquee-img {
+    transform: scale(1.08);
+  }
+
+  /* ── Overlay ── */
+  .marquee-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(23,24,27,0.55) 0%,
+      transparent 60%
+    );
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .marquee-card:hover .marquee-overlay {
+    opacity: 0.3;
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { animation: none; }
+  }
+</style>

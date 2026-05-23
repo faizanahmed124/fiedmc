@@ -73,16 +73,24 @@ const ogImage = `${siteUrl}/og-image.png`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
   </head>
-  <body class="bg-bgDark2 overflow-x-hidden">
-    <main aria-label="Main content">
-      <slot />
-    </main>
+
+  <!-- FIX 1: overflow-x-hidden body se hata diya -->
+  <body class="bg-bgDark2">
+
+    <!-- FIX 2: overflow-x wrapper alag div mein -->
+    <div style="overflow-x: hidden;">
+      <main aria-label="Main content">
+        <slot />
+      </main>
+    </div>
+
     <InvitationModal />
+
     <style is:global>
+      /* FIX 3: html se overflow-x: hidden hata diya */
       html {
         font-family: Inter;
         background-color: #1e1f23;
-        overflow-x: hidden;
         scroll-behavior: smooth !important;
       }
 
@@ -95,6 +103,7 @@ const ogImage = `${siteUrl}/og-image.png`;
         opacity: 1;
       }
     </style>
+
     <script is:inline data-astro-rerun>
       (function () {
         const obs = new IntersectionObserver(

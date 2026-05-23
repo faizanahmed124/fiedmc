@@ -1,223 +1,185 @@
 ---
-const slides = [
+const services = [
   {
-    icon: `<path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/>`,
+    tag: "SUPPLY",
+    number: "01",
+    title: "Material Supplier",
+    subtitle: "Industrial-Grade Raw Materials",
+    description:
+      "We supply a comprehensive range of high-quality industrial materials to construction sites, manufacturing plants, and project contractors — sourced to meet international standards.",
+    features: [
+      "Steel & GI Pipes — all grades & sizes",
+      "Wooden Crates & Packaging Material",
+      "Insulation Raw Material & Cladding",
+      "Structural Steel & Metal Sections",
+    ],
+    badge: "In Stock & Ready",
+    badgeColor: "#10b981",
+    accentColor: "#3b82f6",
+    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
   },
   {
-    icon: `<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>`,
+    tag: "MECHANICAL",
+    number: "02",
+    title: "Mechanical Services",
+    subtitle: "Plant Installation & Fabrication",
+    description:
+      "Our skilled mechanical team handles complete plant installation, structural fabrication, and industrial processes — delivered with safety compliance and engineering excellence.",
+    features: [
+      "New Plant Installation & Commissioning",
+      "Welding, Grinding & Gas Cutting",
+      "Structural Steel Erection",
+      "Pipe Fitting & System Assembly",
+    ],
+    badge: "Certified Workforce",
+    badgeColor: "#10b981",
+    accentColor: "#f59e0b",
+    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80",
   },
   {
-    icon: `<circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>`,
-  },
-  {
-    icon: `<polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>`,
+    tag: "INSULATION",
+    number: "03",
+    title: "Insulation & Ducting",
+    subtitle: "Thermal & Acoustic Solutions",
+    description:
+      "We provide end-to-end insulation and ducting services for industrial facilities, maximizing energy efficiency and maintaining safe operating temperatures across all pipeline networks.",
+    features: [
+      "Steam & Hot Water Pipe Line Insulation",
+      "Cold Line & Chilled Water Insulation",
+      "HVAC Duct Fabrication & Installation",
+      "Aluminium & GI Cladding Finishing",
+    ],
+    badge: "Active Projects",
+    badgeColor: "#10b981",
+    accentColor: "#06b6d4",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
   },
 ];
-const totalPages = slides.length;
 ---
 
-<section class="bg-bgDark2 w-full pt-8 pb-16 lg:pt-12 lg:pb-24">
+<section class="bg-bgDark1 w-full pt-16 pb-24">
   <div class="fade-in">
     <div class="content-container">
-      <div class="mb-12 max-w-2xl">
-        <span class="block-subtitle mb-6 block">Features at a glance</span>
-        <h2 class="block-big-title mb-6">Preview what's inside</h2>
-        <p class="text-secondaryText">
-          Swipe through key screens to see how each feature looks and feels in practice.
-        </p>
+
+      <!-- ── SECTION HEADER ── -->
+      <div class="mb-14 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-xl">
+          <span class="block-subtitle mb-4 block">+ OUR SERVICES +</span>
+        <h2 class="block-big-title mb-5" style=" font-weight:800; font-size:clamp(2.2rem,5vw,4rem); line-height:1.15;">
+  
+  <span style="color:#b87716; font-style:italic;">  We Offer a Range of Industrial Services</span>
+  to Meet All Your Needs
+</h2>
+          <p class="text-secondaryText text-base leading-relaxed">
+            From raw material supply to on-site mechanical installation and thermal insulation —
+            our teams operate with precision, safety, and decades of field experience.
+          </p>
+        </div>
+        <div class="hidden lg:block shrink-0">
+          <a
+            href="/tailcast/services"
+            class="group border-mainBorder bg-bgDark3 text-primaryText hover:bg-bgDark3Hover hover:border-secondaryColor/50 relative inline-flex items-center gap-3 overflow-hidden rounded-full border px-8 py-3.5 text-sm font-semibold uppercase tracking-widest transition-all duration-300"
+          >
+            <span class="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style="background: radial-gradient(ellipse at center, rgba(59,130,246,0.10) 0%, transparent 70%)"/>
+            <span class="relative">All Services</span>
+            <svg class="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
-      <div role="region" aria-roledescription="carousel" aria-label="Feature preview gallery">
-        <!-- Track wrapper with arrows -->
-        <div class="gallery-viewport relative">
-          <button
-            class="gallery-prev border-mainBorder bg-bgDark3 text-primaryText hover:bg-bgDark3Hover absolute top-1/2 -left-7 z-10 flex hidden h-14 w-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border transition-colors duration-300 lg:flex"
-            aria-label="Previous"
+      <!-- ── 3-COLUMN CARD GRID ── -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s) => (
+          <div
+            class="group relative flex flex-col overflow-hidden rounded-2xl transition-all duration-500 hover:-translate-y-2"
+            style="background:#131520; border:1px solid rgba(255,255,255,0.07); box-shadow:0 4px 40px rgba(0,0,0,0.3)"
           >
-            <svg
-              class="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <button
-            class="gallery-next border-mainBorder bg-bgDark3 text-primaryText hover:bg-bgDark3Hover absolute top-1/2 -right-7 z-10 flex hidden h-14 w-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border transition-colors duration-300 lg:flex"
-            aria-label="Next"
-          >
-            <svg
-              class="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-          <div class="overflow-hidden rounded-2xl">
-            <div
-              class="gallery-track flex transition-transform duration-500 ease-out"
-              style="gap: 1.5rem;"
-            >
-              {
-                [...slides, ...slides].map((slide) => (
-                  <div class="gallery-slide bg-bgDark1Lighter border-mainBorderDarker flex aspect-[4/3] w-full shrink-0 items-center justify-center rounded-xl border sm:w-[calc(50%-0.75rem)]">
-                    <svg
-                      class="text-secondaryColor/25 h-14 w-14"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1"
-                      viewBox="0 0 24 24"
-                      set:html={slide.icon}
-                    />
-                  </div>
-                ))
-              }
+            <!-- Accent top bar -->
+            <div class="h-[3px] w-full shrink-0"
+              style={`background: linear-gradient(to right, ${s.accentColor}, transparent)`}/>
+
+            <!-- ── Image ── -->
+            <div class="relative h-52 overflow-hidden shrink-0">
+              <img
+                src={s.image}
+                alt={s.title}
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <!-- Overlay -->
+              <div class="absolute inset-0"
+                style="background:linear-gradient(to bottom, rgba(13,14,22,0.10) 0%, rgba(13,14,22,0.50) 60%, rgba(13,14,22,0.95) 100%)"/>
+              <!-- Tag -->
+              <div class="absolute top-4 left-4">
+                <span
+                  class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold tracking-widest backdrop-blur-sm"
+                  style={`background:${s.accentColor}25; color:${s.accentColor}; border:1px solid ${s.accentColor}40`}
+                >
+                  <span class="h-1.5 w-1.5 rounded-full inline-block" style={`background:${s.accentColor}`}/>
+                  {s.tag}
+                </span>
+              </div>
+              <!-- Card number -->
+              <div class="absolute top-4 right-4">
+                <span class="font-mono text-xs text-white/30">{s.number}</span>
+              </div>
+              <!-- Title on image -->
+              <div class="absolute bottom-0 left-0 right-0 p-5">
+                <h3 class="text-primaryText text-xl font-bold leading-tight">{s.title}</h3>
+                <p class="mt-0.5 text-sm font-medium" style={`color:${s.accentColor}`}>{s.subtitle}</p>
+              </div>
+            </div>
+
+            <!-- ── Card Body ── -->
+            <div class="flex flex-1 flex-col p-5">
+              <p class="text-secondaryText mb-5 text-sm leading-relaxed">{s.description}</p>
+
+              <!-- Features -->
+              <ul class="mb-5 flex flex-col gap-2">
+                {s.features.map((f) => (
+                  <li class="flex items-start gap-2 text-sm">
+                    <svg class="mt-0.5 h-3.5 w-3.5 shrink-0" fill="none" stroke={s.accentColor}
+                      stroke-width="2.5" viewBox="0 0 24 24">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span class="text-secondaryText/75">{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <!-- Footer -->
+              <div class="mt-auto flex items-center justify-between border-t pt-4"
+                style="border-color:rgba(255,255,255,0.07)">
+                <span class="flex items-center gap-1.5 text-sm font-semibold" style={`color:${s.badgeColor}`}>
+                  <svg class="h-3.5 w-3.5" fill="none" stroke={s.badgeColor} stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {s.badge}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Dots -->
-        <div class="mt-10 flex items-center justify-center gap-3">
-          {
-            Array.from({ length: totalPages }).map((_, i) => (
-              <button
-                class:list={[
-                  'gallery-dot h-4 w-4 cursor-pointer rounded-full transition-all duration-300',
-                  i === 0 ? 'bg-primaryText scale-100' : 'bg-secondaryText/30 scale-90',
-                ]}
-                data-dot-index={i}
-                aria-label={`Go to page ${i + 1}`}
-              />
-            ))
-          }
-        </div>
+        ))}
       </div>
+
+      <!-- ── MOBILE LOAD MORE ── -->
+      <div class="mt-12 flex justify-center lg:hidden">
+        <a
+          href="/tailcast/services"
+          class="group border-mainBorder bg-bgDark3 text-primaryText hover:bg-bgDark3Hover hover:border-secondaryColor/50 inline-flex items-center gap-3 rounded-full border px-8 py-3.5 text-sm font-semibold uppercase tracking-widest transition-all duration-300"
+        >
+          Load More Services
+          <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
-
-<script>
-  const initGallery = () => {
-    const track = document.querySelector<HTMLDivElement>('.gallery-track');
-    const prev = document.querySelector<HTMLButtonElement>('.gallery-prev');
-    const next = document.querySelector<HTMLButtonElement>('.gallery-next');
-    const dots = document.querySelectorAll<HTMLButtonElement>('.gallery-dot');
-    if (!track) return;
-
-    const allSlides = track.querySelectorAll<HTMLDivElement>('.gallery-slide');
-    const realCount = allSlides.length / 2; // half are clones
-    let current = 0;
-    let isTransitioning = false;
-    const gap = 24;
-
-    const getSlideStep = () => {
-      return allSlides[0].offsetWidth + gap;
-    };
-
-    const setPosition = (index: number, animate: boolean) => {
-      track!.style.transition = animate ? 'transform 500ms ease-out' : 'none';
-      track!.style.transform = `translateX(-${index * getSlideStep()}px)`;
-    };
-
-    const updateDots = () => {
-      const activeDot = ((current % realCount) + realCount) % realCount;
-      dots.forEach((dot, i) => {
-        if (i < realCount) {
-          dot.classList.toggle('bg-primaryText', i === activeDot);
-          dot.classList.toggle('scale-100', i === activeDot);
-          dot.classList.toggle('bg-secondaryText/30', i !== activeDot);
-          dot.classList.toggle('scale-90', i !== activeDot);
-          (dot as HTMLElement).style.display = '';
-        } else {
-          (dot as HTMLElement).style.display = 'none';
-        }
-      });
-    };
-
-    const goBy = (delta: number) => {
-      if (isTransitioning) return;
-      isTransitioning = true;
-
-      // Backward past 0: pre-jump to clone region, then animate
-      if (current + delta < 0) {
-        current += realCount;
-        track!.style.transition = 'none';
-        track!.style.transform = `translateX(-${current * getSlideStep()}px)`;
-        void track!.offsetHeight;
-      }
-
-      current += delta;
-      setPosition(current, true);
-      updateDots();
-    };
-
-    track.addEventListener('transitionend', () => {
-      // Forward past last real slide: post-jump to start
-      if (current >= realCount) {
-        current -= realCount;
-        track!.style.transition = 'none';
-        track!.style.transform = `translateX(-${current * getSlideStep()}px)`;
-        void track!.offsetHeight;
-      }
-      isTransitioning = false;
-    });
-
-    prev?.addEventListener('click', () => goBy(-1));
-    next?.addEventListener('click', () => goBy(1));
-
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        if (isTransitioning) return;
-        const targetPage = Number(dot.dataset.dotIndex);
-        current = targetPage;
-        setPosition(current, true);
-        updateDots();
-        isTransitioning = true;
-      });
-    });
-
-    // Swipe (touch + mouse drag)
-    let startX = 0;
-    let isDragging = false;
-
-    const onDragStart = (x: number) => {
-      startX = x;
-      isDragging = true;
-    };
-    const onDragEnd = (x: number) => {
-      if (!isDragging) return;
-      isDragging = false;
-      const diff = startX - x;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) goBy(1);
-        else goBy(-1);
-      }
-    };
-
-    track.addEventListener('touchstart', (e) => onDragStart(e.touches[0].clientX), {
-      passive: true,
-    });
-    track.addEventListener('touchend', (e) => onDragEnd(e.changedTouches[0].clientX));
-    track.addEventListener('mousedown', (e) => {
-      e.preventDefault();
-      onDragStart(e.clientX);
-    });
-    window.addEventListener('mouseup', (e) => onDragEnd(e.clientX));
-
-    window.addEventListener('resize', () => {
-      setPosition(current, false);
-      updateDots();
-    });
-
-    setPosition(0, false);
-    updateDots();
-  };
-
-  document.addEventListener('DOMContentLoaded', initGallery);
-  document.addEventListener('astro:page-load', initGallery);
-</script>

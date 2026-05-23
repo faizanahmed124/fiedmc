@@ -1,43 +1,130 @@
 ---
-import AmazonLogo from '../assets/logos/AmazonLogo.astro';
-import DropboxLogo from '../assets/logos/DropboxLogo.astro';
-import NetflixLogo from '../assets/logos/NetflixLogo.astro';
-import SlackLogo from '../assets/logos/SlackLogo.astro';
-import SpotifyLogo from '../assets/logos/SpotifyLogo.astro';
-import StripeLogo from '../assets/logos/StripeLogo.astro';
+// TrustSection.astro
+// Redesigned "Approved By" section for construction company
+// Registered by FBR and PRA
 ---
 
-<section class="bg-bgDark1 mb-8 w-full py-12 sm:py-24 lg:mt-16 lg:mb-16">
-  <div class="fade-in">
-    <div class="content-container">
-      <div
-        class="-mx-4 flex flex-col items-center justify-center text-center lg:flex-row lg:text-left"
-      >
-        <div class="mb-12 w-full px-4 lg:mb-0 lg:w-1/2">
-          <div class="flex flex-col">
-            <h2
-              class="text-primaryText mb-2 text-4xl font-bold tracking-normal sm:text-5xl 2xl:text-6xl"
-            >
-              Trusted by brands
-            </h2>
-            <h2
-              class="to-secondaryColor bg-gradient-to-r from-[rgb(130,132,244)] bg-clip-text text-4xl font-bold tracking-normal text-transparent sm:text-5xl 2xl:text-6xl"
-            >
-              all over the world
-            </h2>
+<section class="relative bg-bgDark1 w-full py-16 sm:py-24 lg:py-32 overflow-hidden">
+
+  <!-- Subtle background grid texture -->
+  
+
+  <!-- Top border accent -->
+  <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-orange-400 to-transparent"></div>
+
+  <div class="content-container relative z-10 fade-in">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="inline-block text-blue-400 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+        ✦ Verified & Trusted ✦
+      </span>
+      <h2 class="text-primaryText text-4xl sm:text-5xl 2xl:text-6xl font-bold tracking-tight leading-tight">
+        Officially
+        <span class="bg-gradient-to-r from-orange-200 to-orange-300 bg-clip-text text-transparent"> Recognized</span>
+      </h2>
+      <p class="mt-4 text-gray-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+        Our company stands on a foundation of legal compliance, financial integrity, and government-verified credentials.
+      </p>
+    </div>
+
+    <!-- Cards Row -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+      <!-- FBR Card -->
+      <div class="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 hover:border-orange-500/40 hover:bg-white/8 transition-all duration-500">
+        <div class="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-orange-400/60 to-transparent"></div>
+        
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-3 py-1 mb-6">
+          <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span>
+          <span class="text-orange-400 text-xs font-semibold tracking-widest uppercase">Federal</span>
+        </div>
+
+        <!-- Logo / Acronym -->
+        <div class="flex items-center gap-4 mb-5">
+          <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-600/20 border border-orange-500/20 flex items-center justify-center">
+            <span class="text-orange-400 text-xl font-black tracking-tight">FBR</span>
+          </div>
+          <div>
+            <h3 class="text-white text-lg font-bold leading-tight">Federal Board<br/>of Revenue</h3>
           </div>
         </div>
-        <div class="mx-auto w-2/3 sm:w-[38.75rem] lg:mx-0 lg:w-1/2 lg:pl-10">
-          <div class="-m-4 flex flex-wrap">
-            <div class="flex w-1/2 justify-center py-6 sm:w-1/3"><AmazonLogo /></div>
-            <div class="flex w-1/2 justify-center py-6 sm:w-1/3"><DropboxLogo /></div>
-            <div class="flex w-1/2 justify-center py-6 sm:w-1/3"><NetflixLogo /></div>
-            <div class="flex w-1/2 justify-center py-6 sm:w-1/3"><StripeLogo /></div>
-            <div class="flex w-1/2 justify-center py-6 sm:w-1/3"><SpotifyLogo /></div>
-            <div class="flex w-1/2 justify-center py-6 sm:w-1/3"><SlackLogo /></div>
-          </div>
+
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Registered and compliant with the Federal Board of Revenue. All tax records are verified and up-to-date under FBR regulations, ensuring full federal tax compliance.
+        </p>
+
+        <!-- Verified tick -->
+        <div class="mt-6 flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span class="text-green-400 text-xs font-semibold tracking-wide">Taxpayer Record Satisfied</span>
         </div>
       </div>
+
+      <!-- PRA Card -->
+      <div class="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 hover:border-orange-500/40 hover:bg-white/8 transition-all duration-500">
+        <div class="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-orange-400/60 to-transparent"></div>
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-3 py-1 mb-6">
+          <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span>
+          <span class="text-orange-400 text-xs font-semibold tracking-widest uppercase">Provincial</span>
+        </div>
+
+        <!-- Logo / Acronym -->
+        <div class="flex items-center gap-4 mb-5">
+          <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-600/20 border border-orange-500/20 flex items-center justify-center">
+            <span class="text-orange-400 text-xl font-black tracking-tight">PRA</span>
+          </div>
+          <div>
+            <h3 class="text-white text-lg font-bold leading-tight">Punjab Revenue<br/>Authority</h3>
+          </div>
+        </div>
+
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Fully registered with the Punjab Revenue Authority. Our provincial tax obligations are satisfied and actively maintained in compliance with PRA standards.
+        </p>
+
+        <!-- Verified tick -->
+        <div class="mt-6 flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span class="text-green-400 text-xs font-semibold tracking-wide">Taxpayer Record Satisfied</span>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Bottom trust bar -->
+    <div class="mt-14 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
+      <div class="flex items-center gap-3 text-gray-500 text-sm">
+        <svg class="w-5 h-5 text-blue-500/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+        Government Registered Since 1990
+      </div>
+      <div class="hidden sm:block w-px h-5 bg-white/10"></div>
+      <div class="flex items-center gap-3 text-gray-500 text-sm">
+        <svg class="w-5 h-5 text-blue-500/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+        </svg>
+        All Tax Records Up-to-Date
+      </div>
+      <div class="hidden sm:block w-px h-5 bg-white/10"></div>
+      <div class="flex items-center gap-3 text-gray-500 text-sm">
+        <svg class="w-5 h-5 text-blue-500/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+        </svg>
+        Fully Compliant Operations
+      </div>
+    </div>
+
   </div>
+
+  <!-- Bottom border accent -->
+  <div class="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
 </section>
