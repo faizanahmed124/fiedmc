@@ -1,181 +1,355 @@
 ---
-import { Image } from 'astro:assets';
-import feature5 from '../assets/images/feature5.jpg';
-import feature6 from '../assets/images/feature6.jpg';
-import feature7 from '../assets/images/feature7.jpg';
-import feature8 from '../assets/images/feature8.jpg';
+// BlogSection.astro
+// Latest Blog — FIEDMC color scheme matching ProjectsSection
 
-const projects = [
-  { image: feature5, name: 'NESTLE MILK PACK LTD SHEIKHPURA' },
-  { image: feature6, name: 'NISHAT GROUP OF INDUSTRIES' },
-  { image: feature7, name: 'SAPPHIRE GROUP' },
-  { image: feature8, name: 'PEPSICO PVT LTD SUNDAR ESTATE LAHORE' },
+const posts = [
+  {
+    tag:     "Official Visit",
+    date:    "March 12, 2026",
+    title:   "Meeting with Visiting Customers",
+    excerpt: "FIEDMC hosted a delegation of international investors at M-3 Industrial City to explore investment opportunities and discuss potential partnerships.",
+    href:    "/news/meeting-visiting-customers",
+    imgSrc:  "https://i.pinimg.com/736x/88/c2/a6/88c2a619772b9141295e766ca769cd55.jpg",   // ← paste image URL here
+  },
+  {
+    tag:     "CEO Visit",
+    date:    "February 28, 2026",
+    title:   "CEO FIEDMC Official Visit of VAC",
+    excerpt: "The CEO of FIEDMC conducted an official inspection tour of the Value Addition City, reviewing infrastructure progress and meeting with allottees.",
+    href:    "/news/ceo-visit-vac",
+    imgSrc:  "https://i.pinimg.com/736x/69/91/e9/6991e99df681926b77e1422ad4e40863.jpg",   // ← paste image URL here
+  },
+  {
+    tag:     "Industry Tour",
+    date:    "February 10, 2026",
+    title:   "The Ceramics Plants Visit",
+    excerpt: "A high-level delegation visited the Time Ceramics plant within M-3 Industrial City, highlighting the success of FIEDMC's industrial ecosystem.",
+    href:    "/news/ceramics-plant-visit",
+    imgSrc:  "https://i.pinimg.com/736x/39/4b/98/394b98d94ab6026c1c07e23cb2435e61.jpg",   // ← paste image URL here
+  },
 ];
 ---
 
-<section class="bg-bgDark1   w-full pt-10 pb-16 ">
-  <div class="mx-auto w-11/12 xl:w-[81.25rem] 2xl:w-[90.625rem]">
+<section id="blog" class="bl-section">
 
-    <!-- Heading -->
-   <div class="mb-12 text-center">
-  <span class="block-subtitle" style="color:#b87716;">What We've Built</span>
-  <h2 class="block-big-title mt-4" style="font-family:'Playfair Display','Georgia',serif; font-weight:800; font-size:clamp(2.2rem,5vw,4rem); line-height:1.1;">
-    Our Projects
-  </h2>
-</div>
+  <!-- Decorative background -->
+  <div class="bl-bg-pattern" aria-hidden="true"></div>
+  <div class="bl-bg-blob bl-bg-blob--tl" aria-hidden="true"></div>
+  <div class="bl-bg-blob bl-bg-blob--br" aria-hidden="true"></div>
 
-    <!-- Projects Grid -->
-    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-      {projects.map((project, i) => (
-        <div
-          class="project-card opacity-0 translate-y-10 transition-all duration-700"
-          style={`transition-delay: ${i * 200}ms`}
-        >
-          <div class="overflow-hidden rounded-2xl">
-            <Image
-              src={project.image}
-              alt={project.name}
-              class="h-72 w-full object-cover rounded-2xl"
-              loading="eager"
-            />
-          </div>
-          <h3 class="mt-4 text-center text-lg font-semibold text-white">{project.name}</h3>
-        </div>
-      ))}
+  <div class="bl-inner">
+
+    <!-- Header row -->
+    <div class="bl-header" data-anim="fade-up">
+      <div class="bl-header-left">
+        <span class="bl-eyebrow">
+          <span class="bl-eyebrow-bar"></span>
+          Latest Blog
+          <span class="bl-eyebrow-bar"></span>
+        </span>
+        <h2 class="bl-h2">Learn about our <em>Latest<br/>News</em> from Blog</h2>
+        <div class="bl-divider"></div>
+      </div>
+      <div class="bl-header-right">
+        <a href="/news" class="bl-btn-gold">
+          View All Blog
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
-    <!-- Load More Button -->
-    <div class="mt-12 flex justify-center">
-   <button
-  onclick="window.location.href='/umar&company/projects'"
-  class="load-more-btn"
->
-  <span class="load-more-btn__text">Load More</span>
-  <span class="load-more-btn__icon" aria-hidden="true">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 5v14M5 12l7 7 7-7"/>
-    </svg>
-  </span>
-  <span class="load-more-btn__ripple" aria-hidden="true"></span>
-</button>
+    <!-- Blog Cards Grid -->
+    <div class="bl-grid">
+      {posts.map((post, i) => (
+        <article
+          class="bl-card"
+          data-anim="fade-up"
+          style={`transition-delay:${0.10 + i * 0.12}s`}
+        >
+          <!-- Image -->
+          <div class="bl-card-img-wrap">
+            <img
+              src={post.imgSrc}
+              alt={post.title}
+              class="bl-card-img"
+              width="600"
+              height="220"
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding="async"
+            />
+            <!-- Fallback gradient shown when src is empty or broken -->
+            <div class="bl-img-fallback" aria-hidden="true">
+              <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v8a2 2 0 01-2 2z"/>
+                <path d="M15 2v6h6M8 13h8M8 17h5"/>
+              </svg>
+            </div>
+            <div class="bl-img-overlay" aria-hidden="true"></div>
+
+            <!-- Category tag -->
+            <span class="bl-card-tag">{post.tag}</span>
+          </div>
+
+          <!-- Body -->
+          <div class="bl-card-body">
+            <span class="bl-card-date">
+              <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+              </svg>
+              {post.date}
+            </span>
+
+            <h3 class="bl-card-title">{post.title}</h3>
+            <div class="bl-card-divider"></div>
+            <p class="bl-card-desc">{post.excerpt}</p>
+
+            <a href={post.href} class="bl-card-cta">
+              Read More
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
     </div>
 
   </div>
 </section>
+
 <style>
-  .load-more-btn {
+  /* ── Tokens (identical to ProjectsSection) ── */
+  :root {
+    --pg:   #C4952A;
+    --pgh:  #D9A83C;
+    --pn:   #071833;
+    --pnm:  #0B2447;
+    --pw:   #FFFFFF;
+    --pbg:  #F4F7FB;
+    --pb2:  #EBF0F8;
+    --pbor: #DDE3EC;
+    --ptxt: #6B7A8D;
+    --psans:'Segoe UI', system-ui, -apple-system, sans-serif;
+    --pser: 'Georgia', 'Times New Roman', serif;
+  }
+
+  /* ── Section ── */
+  .bl-section {
     position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    height: 3rem;
-    width: 12rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: #ffffff;
-    background: ;
-    border: 1.5px solid #e09a31;
-    border-radius: 8px;
-    cursor: pointer;
+    background: var(--pbg);
+    padding: 96px 0 80px;
     overflow: hidden;
-    transition: color 0.3s, border-color 0.3s;
-    outline: none;
   }
- 
-  /* Sliding blue shine on hover */
-  .load-more-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      transparent 0%,
-      rgba(96,165,250,0.25) 50%,
-      transparent 100%
-    );
-    transition: left 0.5s ease;
-    z-index: 0;
+
+  .bl-bg-pattern {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle, rgba(11,36,71,.07) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
- 
-  /* Bottom glow bar */
-  .load-more-btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    width: 80%;
-    height: 2px;
-    background: #e09a31;
-    border-radius: 2px;
-    transition: transform 0.35s ease;
-    z-index: 0;
+  .bl-bg-blob {
+    position: absolute; border-radius: 50%;
+    filter: blur(100px); pointer-events: none; z-index: 0;
   }
- 
-  .load-more-btn:hover::before {
-    left: 100%;
+  .bl-bg-blob--tl {
+    width: 600px; height: 600px; top: -200px; left: -200px;
+    background: rgba(196,149,42,.07);
   }
- 
-  .load-more-btn:hover::after {
-    transform: translateX(-50%) scaleX(1);
+  .bl-bg-blob--br {
+    width: 500px; height: 500px; bottom: -150px; right: -150px;
+    background: rgba(7,24,51,.06);
   }
- 
-  .load-more-btn:hover {
-    border-color: #60a5fa;
-    background: #e09a31;
+
+  /* ── Container ── */
+  .bl-inner {
+    position: relative; z-index: 1;
+    max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
   }
- 
-  /* Arrow bounces down on hover */
-  .load-more-btn__text,
-  .load-more-btn__icon {
-    position: relative;
-    z-index: 1;
-  }
- 
-  .load-more-btn__icon {
+
+  /* ── Header row ── */
+  .bl-header {
     display: flex;
-    align-items: center;
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
   }
- 
-  .load-more-btn:hover .load-more-btn__icon {
-    transform: translateY(4px);
+
+  .bl-header-left {}
+
+  .bl-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font: 700 0.7rem/1 var(--psans); letter-spacing: .12em; text-transform: uppercase;
+    color: var(--pg); margin-bottom: 14px;
   }
- 
-  /* Click press effect */
-  .load-more-btn:active {
-    transform: scale(0.97);
+  .bl-eyebrow-bar {
+    width: 22px; height: 2px; background: var(--pg);
+    border-radius: 1px; opacity: .6; display: inline-block;
+  }
+
+  .bl-h2 {
+    font: 700 clamp(2rem,4vw,3rem)/1.2 var(--pser);
+    color: var(--pn); margin: 0 0 4px; letter-spacing: -.01em;
+  }
+  .bl-h2 em { font-style: italic; color: var(--pg); }
+
+  .bl-divider {
+    width: 48px; height: 3px; background: var(--pg);
+    border-radius: 2px; margin-top: 14px;
+  }
+
+  .bl-header-right { flex-shrink: 0; }
+
+  .bl-btn-gold {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--pg); color: var(--pn);
+    font: 700 13.5px/1 var(--psans); padding: 13px 26px;
+    border-radius: 3px; text-decoration: none;
+    border: 2px solid var(--pg); letter-spacing: .02em; white-space: nowrap;
+    transition: background .2s, border-color .2s, transform .2s;
+  }
+  .bl-btn-gold:hover {
+    background: var(--pgh); border-color: var(--pgh);
+    transform: translateY(-1px);
+  }
+  .bl-btn-gold svg { transition: transform .2s; }
+  .bl-btn-gold:hover svg { transform: translateX(3px); }
+
+  /* ── Grid ── */
+  .bl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media(max-width:900px) { .bl-grid { grid-template-columns: repeat(2,1fr); } }
+  @media(max-width:580px) { .bl-grid { grid-template-columns: 1fr; } }
+
+  /* ── Card ── */
+  .bl-card {
+    background: var(--pw);
+    border: 1px solid var(--pbor);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: box-shadow .3s, transform .3s, border-color .3s;
+  }
+  .bl-card:hover {
+    box-shadow: 0 20px 52px rgba(7,24,51,.12);
+    transform: translateY(-4px);
+    border-color: rgba(196,149,42,.4);
+  }
+
+  /* Image */
+  .bl-card-img-wrap {
+    position: relative; height: 220px; overflow: hidden;
+    background: var(--pn);
+  }
+  .bl-card-img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; position: relative; z-index: 2;
+    transition: transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .bl-card:hover .bl-card-img { transform: scale(1.05); }
+
+  /* Fallback shown when img src is empty or errors */
+  .bl-img-fallback {
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--pnm) 0%, var(--pn) 100%);
+    color: rgba(196,149,42,.3);
+  }
+
+  .bl-img-overlay {
+    position: absolute; inset: 0; z-index: 3;
+    background: linear-gradient(to top, rgba(7,24,51,.65) 0%, rgba(7,24,51,.08) 55%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* Category tag — top left */
+  .bl-card-tag {
+    position: absolute; top: 14px; left: 14px; z-index: 4;
+    background: var(--pn); color: var(--pg);
+    font: 700 10px/1 var(--psans); letter-spacing: .08em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 2px;
+    border-left: 3px solid var(--pg);
+  }
+
+  /* Body */
+  .bl-card-body {
+    padding: 20px 22px 24px;
+    display: flex; flex-direction: column; flex: 1;
+  }
+
+  .bl-card-date {
+    display: inline-flex; align-items: center; gap: 5px;
+    font: 400 11.5px/1 var(--psans); color: var(--ptxt);
+    margin-bottom: 12px;
+  }
+  .bl-card-date svg { color: var(--pg); flex-shrink: 0; }
+
+  .bl-card-title {
+    font: 700 clamp(1.1rem,2vw,1.35rem)/1.3 var(--pser);
+    color: var(--pn); margin: 0;
+    transition: color .2s;
+  }
+  .bl-card:hover .bl-card-title { color: var(--pg); }
+
+  .bl-card-divider {
+    width: 36px; height: 3px; background: var(--pg);
+    border-radius: 2px; margin: 12px 0 14px;
+  }
+
+  .bl-card-desc {
+    font: 400 14px/1.75 var(--psans); color: var(--ptxt);
+    margin: 0 0 20px; flex: 1;
+  }
+
+  /* CTA link */
+  .bl-card-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--pn); color: var(--pw);
+    font: 600 13px/1 var(--psans); padding: 10px 20px;
+    border-radius: 3px; text-decoration: none; width: fit-content;
+    border: 2px solid var(--pn); letter-spacing: .02em;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .bl-card-cta:hover {
+    background: var(--pg); border-color: var(--pg); color: var(--pn);
+  }
+  .bl-card-cta svg { transition: transform .2s; }
+  .bl-card-cta:hover svg { transform: translateX(4px); }
+
+  /* ── Scroll Animations ── */
+  [data-anim] {
+    opacity: 0;
+    transition:
+      opacity  .75s cubic-bezier(.22,1,.36,1),
+      transform .75s cubic-bezier(.22,1,.36,1);
+  }
+  [data-anim="fade-up"] { transform: translateY(28px); }
+  [data-anim].visible   { opacity: 1; transform: none; }
+  @media(prefers-reduced-motion:reduce){
+    [data-anim]{ opacity:1; transform:none; transition:none; }
+  }
+
+  @media(max-width:700px){
+    .bl-header { flex-direction: column; align-items: flex-start; }
   }
 </style>
- 
 
-
-
-
-
-
-<script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const cards = entry.target.querySelectorAll('.project-card');
-          cards.forEach((card) => {
-            card.classList.remove('opacity-0', 'translate-y-10');
-            card.classList.add('opacity-100', 'translate-y-0');
-          });
-          observer.unobserve(entry.target);
-        }
+<script is:inline>
+  function initBlAnims() {
+    var els = document.querySelectorAll('#blog [data-anim]');
+    if (!els.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
       });
-    },
-    { threshold: 0.2 }
-  );
-
-  const section = document.querySelector('.project-card')?.closest('section');
-  if (section) observer.observe(section);
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+  }
+  document.addEventListener('DOMContentLoaded', initBlAnims);
+  document.addEventListener('astro:page-load',  initBlAnims);
 </script>

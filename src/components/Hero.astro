@@ -1,190 +1,273 @@
----
-// Hero.astro — Place background.mp4 inside /public/tailcast/ folder
----
 
 <section
   id="home"
-  class="relative min-h-screen w-full overflow-hidden flex items-center"
-  style="position: relative; z-index: 1;"
+  class="hero-section"
 >
-  <!-- ── Background Video ── -->
-  <video
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-    class="absolute inset-0 h-full w-full object-cover z-0"
-  >
-    <source src="/background.mp4" type="video/mp4" />
-  </video>
+  <!-- ── Background Image ── -->
+  <div class="hero-bg" aria-hidden="true"></div>
 
-  <!-- ── Layered overlays for depth ── -->
-  <div class="absolute inset-0 z-10" style="background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.15) 100%)"></div>
-  <div class="absolute inset-0 z-10" style="background: linear-gradient(to top, rgba(0,0,0,0.60) 0%, transparent 50%)"></div>
+  <!-- ── Overlay 1: left-to-right navy fade ── -->
+  <div class="hero-ov hero-ov-lr" aria-hidden="true"></div>
+
+  <!-- ── Overlay 2: bottom navy vignette ── -->
+  <div class="hero-ov hero-ov-bt" aria-hidden="true"></div>
+
+  <!-- ── Decorative vertical grid lines ── -->
+  <div class="hero-grid" aria-hidden="true"></div>
 
   <!-- ── Hero Content ── -->
-  <div class="relative z-20 w-full px-6 pt-24 pb-16 lg:pl-20 xl:pl-32">
+  <div class="hero-content">
 
-    <!-- Tag line -->
-    <div class="hero-tag mb-6">
-      <span class="dot"></span>
-      Experienced & Reliable Contractor
+    <!-- Government tag -->
+    <div class="hero-tag" role="text">
+      <span class="hero-dot" aria-hidden="true"></span>
+      Government of Punjab — Industrial Estate Authority
     </div>
 
-    <!-- Heading -->
-    <h1 class="hero-heading">
-      Building Vision,<br />
-      <span class="hero-accent">Shaping</span> the Future
+    <!-- Main heading -->
+    <h1 class="hero-h1">
+      Powering Punjab&apos;s<br />
+      <span class="hero-em">Industrial</span><span class="hero-white"> Future</span>
     </h1>
 
-    <!-- Sub text -->
-    <p class="hero-sub">
-      Since 1990, we deliver end-to-end industrial solutions — from material supply
-      and mechanical installation to thermal insulation and structural erection.
+    <!-- Description -->
+    <p class="hero-desc">
+      Faisalabad Industrial Estate Development &amp; Management Company
+      (FIEDMC) — providing world-class infrastructure, one-window
+      facilitation, and investment opportunities at M-3 Industrial City
+      since 2007.
     </p>
 
-    <!-- CTAs -->
-    <div class="hero-cta-row">
-      <a href="/tailcast/services" class="btn-primary">
-        Our Services
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path d="M9 5l7 7-7 7"/>
-        </svg>
+    <!-- CTA buttons -->
+    <div class="hero-btns">
+      <a href="/invest" class="hbtn hbtn-gold">
+        Invest Now
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
       </a>
-      <a href="/tailcast/contact" class="btn-secondary">
-        Get a Quote
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path d="M9 5l7 7-7 7"/>
-        </svg>
+      <a href="/one-window-solutions" class="hbtn hbtn-ghost">
+        One Window Solutions
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
       </a>
     </div>
 
     <!-- Stats row -->
-    <div class="hero-stats">
+    <div class="hero-stats" role="list">
       {[
-        { value: "34+", label: "Years Experience" },
-        { value: "50+", label: "Projects Done" },
-        { value: "14+", label: "Major Clients" },
+        { value: "3,000+", label: "Registered Industries" },
+        { value: "500K+",  label: "Jobs Generated"        },
+        { value: "4,600",  label: "Acres Developed"       },
+        { value: "35+",    label: "Investor Countries"    },
       ].map(s => (
-        <div class="stat">
-          <span class="stat-val">{s.value}</span>
-          <span class="stat-lbl">{s.label}</span>
+        <div class="h-stat" role="listitem">
+          <span class="h-stat-n">{s.value}</span>
+          <span class="h-stat-l">{s.label}</span>
         </div>
+      ))}
+    </div>
+
+    <!-- Approval badges -->
+    <div class="hero-badges" role="list">
+      {["BOI Approved SEZ", "Govt. of Punjab", "ISO 9001:2015"].map(b => (
+        <span class="hero-badge" role="listitem">{b}</span>
       ))}
     </div>
 
   </div>
 
   <!-- ── Scroll indicator ── -->
-  <div class="scroll-hint">
+  <div class="scroll-hint" aria-hidden="true">
     <div class="scroll-wheel"></div>
   </div>
 
 </section>
 
 <style>
-  /* ── Tag ── */
+  /* ── Color tokens ── */
+  :root {
+    --hg:      #C4952A;   /* refined gold — less orange, more amber-gold */
+    --hg-h:    #D9A83C;   /* gold hover   */
+    --hg-pale: #F5E8C8;   /* very light gold for text */
+    --hn:      #071833;   /* navy dark    */
+    --hn-mid:  #0B2447;   /* navy mid     */
+    --hw:      #ffffff;
+    --hsans:   'Segoe UI', system-ui, -apple-system, sans-serif;
+    --hserif:  'Georgia', 'Times New Roman', serif;
+  }
+
+  /* ── Section ── */
+  .hero-section {
+    position: relative;
+    min-height: 72vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+
+  /* ── Background image ── */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://i.pinimg.com/736x/9d/f0/e9/9df0e9da7ca17d8a9cba4622d9858d00.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    z-index: 0;
+    /* subtle scale on load */
+    animation: bgScale 12s ease-out both;
+  }
+  @keyframes bgScale {
+    from { transform: scale(1.04); }
+    to   { transform: scale(1);    }
+  }
+
+  /* ── Overlays ── */
+  .hero-ov { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .hero-ov-lr {
+    background: linear-gradient(
+      to right,
+      rgba(7, 24, 51, 0.92) 0%,
+      rgba(7, 24, 51, 0.70) 45%,
+      rgba(7, 24, 51, 0.30) 72%,
+      rgba(7, 24, 51, 0.10) 100%
+    );
+  }
+  .hero-ov-bt {
+    background: linear-gradient(
+      to top,
+      rgba(7, 24, 51, 0.80) 0%,
+      rgba(7, 24, 51, 0.20) 35%,
+      transparent 60%
+    );
+  }
+
+  /* ── Decorative grid ── */
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(196, 149, 42, 0.05) 0px,
+      rgba(196, 149, 42, 0.05) 1px,
+      transparent 1px,
+      transparent 90px
+    );
+  }
+
+  /* ── Content wrapper ── */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: 100px 1.5rem 60px 5%;
+    max-width: 900px;
+  }
+  @media (min-width: 1280px) { .hero-content { padding-left: 8%; } }
+  @media (max-width: 640px)  { .hero-content { padding: 90px 1.25rem 50px; } }
+
+  /* ── Government tag ── */
   .hero-tag {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.72rem;
-    font-weight: 700;
+    gap: 9px;
+    font: 700 0.68rem/1 var(--hsans);
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 999px;
-    padding: 6px 16px;
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(196, 149, 42, 0.38);
+    border-radius: 2px;
+    padding: 7px 16px;
+    background: rgba(196, 149, 42, 0.09);
     backdrop-filter: blur(6px);
-    background: rgba(255,255,255,0.05);
-    animation: fadeUp 0.7s ease both;
+    margin-bottom: 24px;
+    animation: fadeUp 0.7s 0.1s ease both;
   }
-  .dot {
-    width: 7px;
-    height: 7px;
+  .hero-dot {
+    width: 7px; height: 7px;
     border-radius: 50%;
-    background: orange;
-    box-shadow: 0 0 6px orange;
-    animation: pulse 2s ease infinite;
+    background: var(--hg);
+    box-shadow: 0 0 8px var(--hg), 0 0 14px rgba(196,149,42,0.4);
+    flex-shrink: 0;
+    animation: pulse 2.2s ease infinite;
   }
   @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.6; transform: scale(1.3); }
+    0%, 100% { opacity: 1; transform: scale(1);    }
+    50%       { opacity: 0.55; transform: scale(1.35); }
   }
 
-  /* ── Heading ── */
-  .hero-heading {
-    font-size: clamp(2.4rem, 7vw, 6rem);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-    max-width: 780px;
-    animation: fadeUp 0.7s 0.15s ease both;
+  /* ── Main heading ── */
+  .hero-h1 {
+    font: 700 clamp(2.6rem, 6.5vw, 5.2rem)/1.1 var(--hserif);
+    color: var(--hw);
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+    max-width: 820px;
+    animation: fadeUp 0.7s 0.22s ease both;
+    white-space: nowrap;
   }
-  .hero-accent {
-    color: orange;
+  @media (max-width: 860px) { .hero-h1 { white-space: normal; } }
+  /* Gold accent — refined amber-gold, NOT orange */
+  .hero-em {
+    color: var(--hg);
     position: relative;
   }
+  .hero-em::after {
+    content: '';
+    position: absolute;
+    bottom: 6px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--hg), transparent);
+    border-radius: 2px;
+    opacity: 0.5;
+  }
+  .hero-white { color: var(--hw); }
 
-  /* ── Sub ── */
-  .hero-sub {
-    margin-top: 1.5rem;
-    max-width: 520px;
-    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-    line-height: 1.75;
-    color: rgba(255,255,255,0.60);
-    animation: fadeUp 0.7s 0.28s ease both;
+  /* ── Description ── */
+  .hero-desc {
+    font: 400 clamp(0.9rem, 1.5vw, 1.05rem)/1.8 var(--hsans);
+    color: rgba(255, 255, 255, 0.60);
+    max-width: 500px;
+    margin: 0 0 2.25rem;
+    animation: fadeUp 0.7s 0.34s ease both;
   }
 
-  /* ── CTAs ── */
-  .hero-cta-row {
+  /* ── Buttons ── */
+  .hero-btns {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.85rem;
-    margin-top: 2.25rem;
-    animation: fadeUp 0.7s 0.4s ease both;
+    gap: 12px;
+    margin-bottom: 0;
+    animation: fadeUp 0.7s 0.46s ease both;
   }
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 28px;
-    border-radius: 999px;
-    background: rgb(146, 99, 10);
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  .hbtn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px; border-radius: 3px;
+    font: 700 0.875rem/1 var(--hsans);
+    letter-spacing: 0.025em; text-decoration: none;
+    transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.22s;
+    white-space: nowrap;
   }
-  .btn-primary:hover {
-    background: #ffa500cc;
+  /* Gold filled button */
+  .hbtn-gold {
+    background: var(--hg);
+    color: var(--hn);
+    border: 2px solid var(--hg);
+  }
+  .hbtn-gold:hover {
+    background: var(--hg-h);
+    border-color: var(--hg-h);
     transform: translateY(-2px);
-    
   }
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 28px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.22);
-    background: rgba(255,255,255,0.07);
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-decoration: none;
+  /* Ghost/outline button */
+  .hbtn-ghost {
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--hw);
+    border: 1.5px solid rgba(255, 255, 255, 0.30);
     backdrop-filter: blur(8px);
-    transition: background 0.25s, border-color 0.25s, transform 0.25s;
   }
-  .btn-secondary:hover {
-    background: rgba(255,255,255,0.13);
-    border-color: rgba(255,255,255,0.40);
+  .hbtn-ghost:hover {
+    background: rgba(255, 255, 255, 0.13);
+    border-color: rgba(255, 255, 255, 0.58);
     transform: translateY(-2px);
   }
 
@@ -194,69 +277,88 @@
     flex-wrap: wrap;
     gap: 0;
     margin-top: 3rem;
-    animation: fadeUp 0.7s 0.52s ease both;
+    animation: fadeUp 0.7s 0.58s ease both;
   }
-  .stat {
+  .h-stat {
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    padding: 0 2rem 0 0;
-    margin-right: 2rem;
-    border-right: 1px solid rgba(255,255,255,0.15);
+    gap: 5px;
+    padding-right: 1.75rem;
+    margin-right: 1.75rem;
+    border-right: 1px solid rgba(196, 149, 42, 0.22);
   }
-  .stat:last-child {
-    border-right: none;
+  .h-stat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+  .h-stat-n {
+    font: 700 1.9rem/1 var(--hserif);
+    color: var(--hw);
   }
-  .stat-val {
-    font-size: 1.9rem;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1;
-  }
-  .stat-lbl {
-    font-size: 0.68rem;
-    font-weight: 600;
+  .h-stat-l {
+    font: 600 0.67rem/1 var(--hsans);
     letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.42);
+    color: rgba(255, 255, 255, 0.42);
   }
 
-  /* ── Scroll hint ── */
+  /* ── Approval badges ── */
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 2rem;
+    animation: fadeUp 0.7s 0.70s ease both;
+  }
+  .hero-badge {
+    font: 700 0.67rem/1 var(--hsans);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--hg-pale);
+    border: 1px solid rgba(196, 149, 42, 0.30);
+    background: rgba(196, 149, 42, 0.08);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  /* ── Scroll wheel ── */
   .scroll-hint {
     position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
+    bottom: 2.5rem; left: 50%;
     transform: translateX(-50%);
     z-index: 20;
-    animation: fadeUp 1s 1s ease both;
+    animation: fadeUp 1s 1.1s ease both;
   }
   .scroll-wheel {
-    width: 24px;
-    height: 38px;
-    border: 2px solid rgba(255,255,255,0.30);
+    width: 24px; height: 38px;
+    border: 2px solid rgba(196, 149, 42, 0.38);
     border-radius: 12px;
     position: relative;
   }
   .scroll-wheel::before {
     content: '';
     position: absolute;
-    top: 5px;
-    left: 50%;
+    top: 5px; left: 50%;
     transform: translateX(-50%);
-    width: 4px;
-    height: 8px;
+    width: 4px; height: 8px;
     border-radius: 2px;
-    background: rgba(255,255,255,0.60);
-    animation: scrollDown 1.6s ease infinite;
+    background: var(--hg);
+    animation: scrollDown 1.7s ease infinite;
   }
   @keyframes scrollDown {
-    0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    0%   { opacity: 1; transform: translateX(-50%) translateY(0);    }
     100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
   }
 
   /* ── Entrance animation ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .hero-h1 { line-height: 1.12; }
+    .h-stat  { padding-right: 1.25rem; margin-right: 1.25rem; }
+    .h-stat-n { font-size: 1.5rem; }
+    .hero-btns { flex-direction: column; }
+    .hbtn { justify-content: center; }
   }
 </style>

@@ -1,228 +1,541 @@
 ---
-import { Image } from 'astro:assets';
-import feature1 from '../assets/images/feature1.jpg';
-import feature2 from '../assets/images/feature2.jpg';
-import feature3 from '../assets/images/feature3.jpg';
-import feature4 from '../assets/images/feature4.jpg';
-import CheckArrowIcon from '../assets/icons/CheckArrowIcon.astro';
+// AboutLeadership.astro
+// ──────────────────────────────────────────────────────────────────
+// Replace the empty src="" on <img> tags with your actual image paths
+// ──────────────────────────────────────────────────────────────────
 ---
 
-<!-- Google Font: Playfair Display for headings -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<section id="about-leadership" class="al-section">
 
-<section
-  class="features-section w-full pt-24 md:pt-[12vw] lg:pt-16"
-  id="features"
->
-  <div style="position:relative;z-index:1;">
-    <div
-      class="mx-auto flex w-11/12 flex-wrap items-center md:pl-4 xl:w-[81.25rem] xl:pr-16 xl:pl-16 2xl:w-[90.625rem]"
-    >
-      <!-- LEFT: Text -->
-      <div class="mb-12 w-full lg:mb-0 lg:w-1/2">
-        <div class="lg:w-unset mx-auto w-11/12 sm:w-4/5 md:w-3/4 lg:mx-auto">
+  <!-- ════════════════════════════════════════════════
+       PART 1 — COMPANY INTRODUCTION
+  ════════════════════════════════════════════════ -->
+  <div class="al-intro">
+    <div class="al-inner">
 
-          <!-- Eyebrow -->
-          <div class="features-eyebrow" data-anim="fade-right" style="transition-delay:0s;">
-            <span class="features-eyebrow__dot"></span>
-            Since 1990
-            <span class="features-eyebrow__dot"></span>
-          </div>
+      <div class="al-intro-grid">
 
-          <!-- Heading -->
-          <h2 class="features-heading" data-anim="fade-up" style="transition-delay:0.1s;">
-            <span class="heading-white">Company </span>
-            <span class="heading-gold">Introduction</span>
+        <!-- Left: text -->
+        <div class="al-intro-text" data-anim="fade-right">
+
+          <span class="al-eyebrow">
+            <span class="al-eyebrow-bar"></span>
+            Est. 2007 — Government of Punjab
+          </span>
+
+          <h2 class="al-h2">
+            About <em>FIEDMC</em>
           </h2>
+          <div class="al-divider"></div>
 
-          <!-- Body -->
-          <p class="features-body" data-anim="fade-up" style="transition-delay:0.2s;">
-            Umar &amp; Company is working since 1990 and has successfully completed many projects
-            with national and international companies and factories. We deals in Mechanical Services,
-            Labor Services, M.S &amp; S.S. Material Suppliers, Insulation Material Suppliers,
-            Factory work, Boiler Operating, Loading &amp; Unloading, Packing, Supply Lifter,
-            and Excavators. Ducting, Hot &amp; Cool Pipe Line Insulation, All aspects of Quality Control.
+          <p class="al-body">
+            Faisalabad Industrial Estate Development &amp; Management Company
+            (FIEDMC) is a Government of Punjab enterprise established to develop,
+            manage, and promote industrial estates and special economic zones
+            across Punjab, Pakistan.
+          </p>
+          <p class="al-body">
+            Our flagship M-3 Industrial City near Sahianwala Interchange spans
+            over <strong>4,600 acres</strong> and hosts some of Pakistan's most
+            advanced manufacturing facilities — covering textiles, engineering,
+            food processing, and pharmaceuticals — while generating over
+            <strong>500,000 employment opportunities</strong>.
           </p>
 
-          <!-- List -->
-          <ul class="features-list">
-            <li data-anim="fade-right" style="transition-delay:0.30s;"><CheckArrowIcon /><span>Residential &amp; Commercial Construction</span></li>
-            <li data-anim="fade-right" style="transition-delay:0.42s;"><CheckArrowIcon /><span>Expert Project Management</span></li>
-            <li data-anim="fade-right" style="transition-delay:0.54s;"><CheckArrowIcon /><span>Quality Materials &amp; Skilled Workforce</span></li>
+          <!-- Highlights -->
+          <ul class="al-check-list">
+            {[
+              "BOI-Approved Special Economic Zone",
+              "10-Year Income Tax Holiday for SEZ Units",
+              "One Window Facilitation for All Approvals",
+              "24/7 Power, Gas & Water Infrastructure",
+              "Direct Motorway Access — Faisalabad, Lahore, Karachi",
+            ].map((item, i) => (
+              <li data-anim="fade-right" style={`transition-delay:${0.15 + i * 0.08}s`}>
+                <span class="al-check-ico" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6.5L4.5 9L10 3.5" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                {item}
+              </li>
+            ))}
           </ul>
 
+          <div class="al-btns" data-anim="fade-up" style="transition-delay:0.55s">
+            <a href="/about" class="al-btn-gold">Our Story
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/invest" class="al-btn-navy">Invest Now</a>
+          </div>
         </div>
-      </div>
 
-      <!-- RIGHT: Images -->
-      <div class="mx-auto flex w-3/4 flex-wrap justify-center sm:pr-8 lg:-mx-4 lg:w-1/2 lg:pt-10 lg:pl-4 xl:px-8">
-        <div class="mb-8 w-full px-2 sm:w-1/2 lg:mb-0 lg:px-0">
-          <div class="mb-4 rounded py-3 pr-2 pl-3">
-            <div class="relative" data-anim="scale-in" style="transition-delay:0.15s;">
-              <Image src={feature1} alt="Feature image 1"
-                class="sm:mx-unset image-border mx-auto rounded-xl features-img"
-                loading="eager" decoding="sync" />
-              <div class="pointer-events-none absolute inset-0 rounded-xl bg-black/10"></div>
+        <!-- Right: stats grid -->
+        <div class="al-intro-stats" data-anim="fade-up" style="transition-delay:0.2s">
+          {[
+            { num:"2007",   lbl:"Year Established",      icon:"🏛️" },
+            { num:"4,600",  lbl:"Acres Developed",        icon:"🏗️" },
+            { num:"3,000+", lbl:"Registered Industries",  icon:"🏭" },
+            { num:"500K+",  lbl:"Employment Generated",   icon:"👷" },
+            { num:"35+",    lbl:"Investor Countries",     icon:"🌐" },
+            { num:"100%",   lbl:"Govt. of Punjab Backed", icon:"🏅" },
+          ].map(s => (
+            <div class="al-stat-box">
+              <span class="al-stat-icon" aria-hidden="true">{s.icon}</span>
+              <strong class="al-stat-num">{s.num}</strong>
+              <span class="al-stat-lbl">{s.lbl}</span>
             </div>
-          </div>
-          <div class="rounded py-3 pr-2 pl-3">
-            <div class="relative" data-anim="scale-in" style="transition-delay:0.3s;">
-              <Image src={feature2} alt="Feature image 2"
-                class="sm:mx-unset image-border mx-auto rounded-xl features-img"
-                loading="eager" decoding="sync" />
-              <div class="pointer-events-none absolute inset-0 rounded-xl bg-black/10"></div>
-            </div>
-          </div>
+          ))}
         </div>
-        <div class="hidden w-1/2 px-2 pt-12 sm:inline-block lg:mt-20 lg:pt-0">
-          <div class="mb-4 rounded-lg py-3 pr-2 pl-3">
-            <div class="relative" data-anim="scale-in" style="transition-delay:0.45s;">
-              <Image src={feature3} alt="Feature image 3"
-                class="image-border rounded-xl features-img"
-                loading="eager" decoding="sync" />
-              <div class="pointer-events-none absolute inset-0 rounded-xl bg-black/10"></div>
-            </div>
-          </div>
-          <div class="rounded-lg py-3 pr-2 pl-3">
-            <div class="relative" data-anim="scale-in" style="transition-delay:0.6s;">
-              <Image src={feature4} alt="Feature image 4"
-                class="image-border rounded-xl features-img"
-                loading="eager" decoding="sync" />
-              <div class="pointer-events-none absolute inset-0 rounded-xl bg-black/10"></div>
-            </div>
-          </div>
-        </div>
-      </div>
 
+      </div>
     </div>
   </div>
+
+  <!-- ════════════════════════════════════════════════
+       PART 2 — LEADERSHIP
+  ════════════════════════════════════════════════ -->
+  <div class="al-leadership">
+    <div class="al-inner">
+
+      <!-- Section header -->
+      <div class="al-ldr-header" data-anim="fade-up">
+        <span class="al-eyebrow al-eyebrow-c">
+          <span class="al-eyebrow-bar"></span>
+          Our Leadership
+          <span class="al-eyebrow-bar"></span>
+        </span>
+        <h2 class="al-h2 al-h2-c">
+          Visionary <em>Leadership</em>
+        </h2>
+        <div class="al-divider al-divider-c"></div>
+        <p class="al-ldr-lead">
+          Guided by experienced professionals committed to transforming
+          Punjab's industrial landscape through innovation and governance.
+        </p>
+      </div>
+
+      <!-- Leader cards -->
+      <div class="al-cards">
+
+        <!-- ── Card 1: Chairman BOD ── -->
+        <article class="al-card" data-anim="fade-up" style="transition-delay:0.1s">
+
+          <!-- Image block -->
+          <div class="al-card-img-wrap">
+            <div class="al-card-img-bg" aria-hidden="true"></div>
+            <!--
+              ↓ REPLACE src="" WITH YOUR IMAGE PATH
+                e.g. src="/images/chairman.jpg"
+            -->
+            <img
+              src="https://fiedmc.com.pk/wp-content/uploads/2026/02/rana-shb.png"
+              alt="Rana Azhar Waqar — Chairman BOD FIEDMC"
+              class="al-card-img"
+              loading="lazy"
+              decoding="async"
+            />
+            <!-- Placeholder shown when src is empty -->
+            <div class="al-img-placeholder" aria-hidden="true">
+              <svg width="64" height="64" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <circle cx="12" cy="8" r="4" stroke-width="1.5"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Add Chairman Photo</span>
+            </div>
+            <!-- Role badge -->
+            <div class="al-card-badge">
+              <span class="al-badge-dot" aria-hidden="true"></span>
+              Board of Directors
+            </div>
+          </div>
+
+          <!-- Text block -->
+          <div class="al-card-body">
+            <p class="al-card-role">Chairman BOD, FIEDMC</p>
+            <h3 class="al-card-name">Rana Azhar Waqar</h3>
+            <div class="al-card-divider"></div>
+            <p class="al-card-bio">
+              The Faisalabad Industrial Estate Development &amp; Management Company
+              (FIEDMC) stands as a cornerstone of Pakistan's industrial growth and
+              economic vision. Established in 2004 as a not-for-profit entity under
+              Section 42 of the Companies Ordinance 1984, FIEDMC has been instrumental
+              in transforming the industrial landscape of the region.
+            </p>
+            <p class="al-card-bio">
+              Under his leadership as Chairman of the Board of Directors, FIEDMC has
+              expanded M-3 Industrial City to become Pakistan's largest integrated
+              industrial estate, attracting both domestic and international investment.
+            </p>
+            <div class="al-card-tags">
+              <span>Strategic Leadership</span>
+              <span>Industrial Policy</span>
+              <span>Investment Promotion</span>
+            </div>
+            <a href="/about/board" class="al-card-cta">
+              More About Us
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+        </article>
+
+        <!-- ── Card 2: CEO ── -->
+        <article class="al-card al-card-rev" data-anim="fade-up" style="transition-delay:0.25s">
+
+          <!-- Text block (left on this card) -->
+          <div class="al-card-body">
+            <p class="al-card-role">Chief Executive Officer, FIEDMC</p>
+            <h3 class="al-card-name">Engr. Qurat-Ul-Ain Memon <span class="al-pas">(PAS)</span></h3>
+            <div class="al-card-divider"></div>
+            <p class="al-card-bio">
+              As the top executive at the helm of FIEDMC, she has instilled a
+              warm and determined greeting to all esteemed industrial community
+              members, investors, and the entire FIEDMC team. She has consistently
+              pursued not just a technological shift but a clear operational mandate
+              to translate our ambitious vision into tangible, on-ground results with
+              precision, efficiency, and unwavering commitment.
+            </p>
+            <p class="al-card-bio">
+              Her tenure has seen FIEDMC expand its One Window Solutions,
+              accelerate SEZ registrations, and forge international investment
+              partnerships valued at hundreds of millions of dollars.
+            </p>
+            <div class="al-card-tags">
+              <span>Civil Services (PAS)</span>
+              <span>SEZ Development</span>
+              <span>One Window Reform</span>
+            </div>
+            <a href="/about/management" class="al-card-cta">
+              More About Us
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- Image block -->
+          <div class="al-card-img-wrap">
+            <div class="al-card-img-bg al-card-img-bg-r" aria-hidden="true"></div>
+            <!--
+              ↓ REPLACE src="" WITH YOUR IMAGE PATH
+                e.g. src="/images/ceo.jpg"
+            -->
+            <img
+              src="https://fiedmc.com.pk/wp-content/uploads/2026/02/ceo.png"
+              alt="Engr. Qurat-Ul-Ain Memon (PAS) — CEO FIEDMC"
+              class="al-card-img"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="al-img-placeholder" aria-hidden="true">
+              <svg width="64" height="64" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <circle cx="12" cy="8" r="4" stroke-width="1.5"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Add CEO Photo</span>
+            </div>
+            <div class="al-card-badge">
+              <span class="al-badge-dot" aria-hidden="true"></span>
+              Core Team
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <style>
-  /* ── Section ── */
-  .features-section {
-    position: relative;
-    background: #17181b;
-    overflow: hidden;
+  /* ── Tokens ── */
+  :root {
+    --alg:   #C4952A;
+    --algh:  #D9A83C;
+    --alglp: #FDF6E3;
+    --aln:   #071833;
+    --alnm:  #0B2447;
+    --alnl:  #163A6E;
+    --alw:   #FFFFFF;
+    --albg:  #F8F9FA;
+    --alb2:  #EEF2F7;
+    --albor: #DDE3EC;
+    --altxt: #6B7A8D;
+    --aldark:#1A2438;
+    --alsans:'Segoe UI', system-ui, -apple-system, sans-serif;
+    --alser: 'Georgia','Times New Roman',serif;
   }
 
-  /* ── Eyebrow ── */
-  .features-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: #60a5fa;
-    border: 1px solid rgba(96,165,250,0.25);
-    border-radius: 999px;
-    padding: 6px 18px;
-    background: rgba(96,165,250,0.06);
-    margin-bottom: 1.25rem;
+  /* ── Section wrapper ── */
+  .al-section { background: var(--alw); overflow: hidden; }
+
+  /* ── Shared inner container ── */
+  .al-inner { max-width:1280px; margin:0 auto; padding:0 1.5rem; }
+
+  /* ── Shared eyebrow ── */
+  .al-eyebrow {
+    display:inline-flex; align-items:center; gap:10px;
+    font:700 0.7rem/1 var(--alsans);
+    letter-spacing:.12em; text-transform:uppercase; color:var(--alg);
+    margin-bottom:14px;
   }
-  .features-eyebrow__dot {
-    display: inline-block;
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #60a5fa;
-    opacity: 0.7;
+  .al-eyebrow-c { display:flex; justify-content:center; }
+  .al-eyebrow-bar { width:22px; height:2px; background:var(--alg); border-radius:1px; opacity:.6; display:inline-block; }
+
+  /* ── Shared heading ── */
+  .al-h2 {
+    font:700 clamp(2.2rem,4vw,3.4rem)/1.15 var(--alser);
+    color:var(--aln); margin:0 0 4px; letter-spacing:-.01em;
+  }
+  .al-h2 em { font-style:italic; color:var(--alg); }
+  .al-h2-c  { text-align:center; }
+
+  /* ── Shared divider ── */
+  .al-divider { width:48px; height:3px; background:var(--alg); border-radius:2px; margin:14px 0 20px; }
+  .al-divider-c { margin:14px auto 20px; }
+
+  /* ── Shared body text ── */
+  .al-body { font:400 15px/1.85 var(--alsans); color:var(--altxt); margin:0 0 14px; }
+  .al-body strong { color:var(--aln); font-weight:700; }
+
+  /* ── Shared buttons ── */
+  .al-btns { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+  .al-btn-gold {
+    display:inline-flex; align-items:center; gap:7px;
+    background:var(--alg); color:var(--aln);
+    font:700 13.5px/1 var(--alsans); padding:12px 24px; border-radius:3px;
+    text-decoration:none; border:2px solid var(--alg); letter-spacing:.02em;
+    transition:background .2s, border-color .2s, transform .2s;
+  }
+  .al-btn-gold:hover { background:var(--algh); border-color:var(--algh); transform:translateY(-1px); }
+  .al-btn-navy {
+    display:inline-flex; align-items:center; gap:7px;
+    background:transparent; color:var(--alnm);
+    font:600 13.5px/1 var(--alsans); padding:11px 22px; border-radius:3px;
+    text-decoration:none; border:1.5px solid var(--alnm); letter-spacing:.02em;
+    transition:background .2s, color .2s;
+  }
+  .al-btn-navy:hover { background:var(--alnm); color:var(--alw); }
+
+  /* ════════ PART 1 — INTRO ════════ */
+  .al-intro {
+    padding:96px 0 80px;
+    background:var(--alw);
+    border-bottom:1px solid var(--albor);
+    position:relative;
+  }
+  .al-intro::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(to right, var(--alg) 0%, rgba(196,149,42,.15) 60%, transparent 100%);
   }
 
-  /* ── Heading ── */
-  .features-heading {
-    font-family: 'Playfair Display', 'Georgia', serif;
-    font-weight: 800;
-    font-size: clamp(2.8rem, 6vw, 5.5rem);
-    line-height: 1.08;
-    letter-spacing: -0.01em;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
+  .al-intro-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;
   }
-  .heading-white {
-    color: #ffffff;
-    font-style: normal;
+  @media(max-width:960px){ .al-intro-grid{ grid-template-columns:1fr; gap:48px; } }
+
+  /* Checklist */
+  .al-check-list {
+    list-style:none; padding:0; margin:0 0 26px;
+    display:flex; flex-direction:column; gap:10px;
   }
-  .heading-gold {
-    color: #e09a31;
-    font-style: italic;
+  .al-check-list li {
+    display:flex; align-items:flex-start; gap:10px;
+    font:500 14px/1.5 var(--alsans); color:var(--aldark);
+  }
+  .al-check-ico {
+    width:20px; height:20px; border-radius:50%;
+    background:var(--aln); color:var(--alg);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; margin-top:1px;
   }
 
-  /* ── Body ── */
-  .features-body {
-    font-family: 'DM Sans', sans-serif;
-    color: #94a3b8;
-    font-size: 1.05rem;
-    line-height: 1.85;
-    margin-bottom: 2rem;
-    max-width: 520px;
+  /* Stats grid */
+  .al-intro-stats {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+  }
+  @media(max-width:540px){ .al-intro-stats{ grid-template-columns:repeat(2,1fr); } }
+  .al-stat-box {
+    background:var(--albg);
+    border:1px solid var(--albor);
+    border-top:3px solid var(--alg);
+    border-radius:4px;
+    padding:20px 16px;
+    text-align:center;
+    transition:box-shadow .2s, border-top-color .2s;
+  }
+  .al-stat-box:hover { box-shadow:0 6px 20px rgba(11,36,71,.08); }
+  .al-stat-icon { font-size:22px; display:block; margin-bottom:8px; line-height:1; }
+  .al-stat-num  { font:700 22px/1 var(--alser); color:var(--aln); display:block; margin-bottom:5px; }
+  .al-stat-lbl  { font:600 10.5px/1 var(--alsans); color:var(--altxt); letter-spacing:.06em; text-transform:uppercase; }
+
+  /* ════════ PART 2 — LEADERSHIP ════════ */
+  .al-leadership { padding:96px 0; background:var(--albg); }
+
+  .al-ldr-header { text-align:center; margin-bottom:64px; }
+  .al-ldr-lead {
+    font:400 16px/1.75 var(--alsans); color:var(--altxt);
+    max-width:560px; margin:0 auto;
   }
 
-  /* ── List ── */
-  .features-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
+  /* Leader card */
+  .al-card {
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    background:var(--alw);
+    border:1px solid var(--albor);
+    border-radius:6px;
+    overflow:hidden;
+    margin-bottom:40px;
+    transition:box-shadow .3s;
   }
-  .features-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #e2e8f0;
-    letter-spacing: 0.01em;
+  .al-card:hover { box-shadow:0 16px 48px rgba(7,24,51,.1); }
+  .al-card:last-child { margin-bottom:0; }
+  /* Reversed card (CEO) — text left, image right */
+  .al-card-rev { direction:ltr; }
+  @media(max-width:860px){
+    .al-card,
+    .al-card-rev { grid-template-columns:1fr; }
+    /* On mobile, image always first */
+    .al-card-rev .al-card-img-wrap { order:-1; }
   }
 
-  /* ── Images ── */
-  .features-img {
-    border: 1px solid rgba(96,165,250,0.15);
-    transition: border-color 0.3s, transform 0.4s cubic-bezier(.22,1,.36,1);
+  /* Image side */
+  .al-card-img-wrap {
+    position:relative;
+    background:var(--alb2);
+    min-height:420px;
+    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
   }
-  .features-img:hover {
-    border-color: rgba(96,165,250,0.4);
-    transform: scale(1.02);
+  /* Decorative geometric accent behind image */
+  .al-card-img-bg {
+    position:absolute;
+    bottom:-40px; left:-40px;
+    width:280px; height:280px;
+    border-radius:50%;
+    border:40px solid rgba(196,149,42,.12);
+    pointer-events:none; z-index:0;
   }
+  .al-card-img-bg-r {
+    left:auto; right:-40px;
+  }
+
+  .al-card-img {
+    position:relative; z-index:1;
+    width:100%; height:100%;
+    object-fit:cover; object-position:center top;
+    display:block;
+  }
+  /* Empty src placeholder */
+  .al-card-img:not([src]), .al-card-img[src=""] { display:none; }
+  .al-card-img:not([src]) + .al-img-placeholder,
+  .al-card-img[src=""]   + .al-img-placeholder { display:flex; }
+
+  .al-img-placeholder {
+    display:none;
+    position:absolute; inset:0; z-index:2;
+    flex-direction:column; align-items:center; justify-content:center; gap:12px;
+    color:rgba(11,36,71,.35);
+    background:var(--alb2);
+  }
+  .al-img-placeholder span {
+    font:600 12px/1 var(--alsans); letter-spacing:.06em; text-transform:uppercase;
+  }
+
+  /* Role badge (top-left of image) */
+  .al-card-badge {
+    position:absolute; top:18px; left:18px; z-index:10;
+    display:inline-flex; align-items:center; gap:7px;
+    background:var(--aln); color:var(--alw);
+    font:700 10.5px/1 var(--alsans); letter-spacing:.08em; text-transform:uppercase;
+    padding:5px 13px; border-radius:2px;
+    border-left:3px solid var(--alg);
+  }
+  .al-badge-dot {
+    width:6px; height:6px; border-radius:50%;
+    background:var(--alg); flex-shrink:0;
+    animation:badgePulse 2.2s ease infinite;
+  }
+  @keyframes badgePulse {
+    0%,100%{ opacity:1; transform:scale(1);    }
+    50%     { opacity:.5; transform:scale(1.4); }
+  }
+
+  /* Text side */
+  .al-card-body {
+    padding:48px 44px;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  @media(max-width:860px){ .al-card-body{ padding:32px 24px; } }
+
+  .al-card-role {
+    font:700 11px/1 var(--alsans); letter-spacing:.1em; text-transform:uppercase;
+    color:var(--alg); margin:0 0 8px;
+  }
+  .al-card-name {
+    font:700 clamp(1.6rem,3vw,2.4rem)/1.2 var(--alser);
+    color:var(--aln); margin:0 0 0; letter-spacing:-.01em;
+  }
+  .al-pas {
+    font:400 1rem/1 var(--alser); color:var(--altxt); font-style:italic;
+  }
+  .al-card-divider {
+    width:40px; height:3px; background:var(--alg); border-radius:2px; margin:16px 0 20px;
+  }
+  .al-card-bio {
+    font:400 14.5px/1.8 var(--alsans); color:var(--altxt); margin:0 0 12px;
+  }
+
+  /* Tags */
+  .al-card-tags {
+    display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 24px;
+  }
+  .al-card-tags span {
+    background:rgba(7,24,51,.06); color:var(--alnm);
+    font:600 11px/1 var(--alsans); letter-spacing:.04em;
+    padding:5px 12px; border-radius:2px;
+    border-left:2px solid var(--alg);
+  }
+
+  /* CTA */
+  .al-card-cta {
+    display:inline-flex; align-items:center; gap:7px;
+    background:var(--aln); color:var(--alw);
+    font:600 13px/1 var(--alsans); padding:11px 22px; border-radius:3px;
+    text-decoration:none; width:fit-content; letter-spacing:.02em;
+    border:2px solid var(--aln);
+    transition:background .2s, color .2s, border-color .2s;
+  }
+  .al-card-cta:hover { background:var(--alg); border-color:var(--alg); color:var(--aln); }
 
   /* ── Scroll Animations ── */
   [data-anim] {
-    opacity: 0;
+    opacity:0;
     transition:
-      opacity 0.75s cubic-bezier(.22,1,.36,1),
-      transform 0.75s cubic-bezier(.22,1,.36,1);
+      opacity  .75s cubic-bezier(.22,1,.36,1),
+      transform .75s cubic-bezier(.22,1,.36,1);
   }
-  [data-anim="fade-up"]    { transform: translateY(36px); }
-  [data-anim="fade-right"] { transform: translateX(-28px); }
-  [data-anim="scale-in"]  { transform: scale(0.92); }
-  [data-anim].visible      { opacity: 1; transform: none; }
-
-  @media (prefers-reduced-motion: reduce) {
-    [data-anim] { opacity: 1; transform: none; transition: none; }
+  [data-anim="fade-up"]    { transform:translateY(28px); }
+  [data-anim="fade-right"] { transform:translateX(-24px); }
+  [data-anim].visible       { opacity:1; transform:none; }
+  @media(prefers-reduced-motion:reduce){
+    [data-anim]{ opacity:1; transform:none; transition:none; }
   }
 </style>
 
 <script is:inline>
-  function initFeatureAnimations() {
-    var els = document.querySelectorAll('#features [data-anim]');
+  function initAlAnims() {
+    var els = document.querySelectorAll('#about-leadership [data-anim]');
     if (!els.length) return;
     var obs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
     els.forEach(function(el) { obs.observe(el); });
   }
-  document.addEventListener('DOMContentLoaded', initFeatureAnimations);
-  document.addEventListener('astro:page-load', initFeatureAnimations);
+  document.addEventListener('DOMContentLoaded', initAlAnims);
+  document.addEventListener('astro:page-load',  initAlAnims);
 </script>

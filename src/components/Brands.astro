@@ -1,130 +1,333 @@
 ---
-// TrustSection.astro
-// Redesigned "Approved By" section for construction company
-// Registered by FBR and PRA
+// ServicesSection.astro
+// FIEDMC Services — White background, custom card design
 ---
 
-<section class="relative bg-bgDark1 w-full py-16 sm:py-24 lg:py-32 overflow-hidden">
+<section class="relative bg-white w-full py-16 sm:py-24 lg:py-32 overflow-hidden">
 
-  <!-- Subtle background grid texture -->
-  
+  <!-- Soft decorative blobs -->
+  <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-50 blur-3xl opacity-70 pointer-events-none"></div>
+  <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-blue-50/50 blur-3xl pointer-events-none"></div>
 
-  <!-- Top border accent -->
-  <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-orange-400 to-transparent"></div>
+  <!-- Dot grid texture -->
+  <div class="absolute inset-0 opacity-[0.035]"
+    style="background-image: radial-gradient(circle, #1e3a8a 1px, transparent 1px); background-size: 28px 28px;">
+  </div>
 
-  <div class="content-container relative z-10 fade-in">
+  <div class="content-container relative z-10">
 
     <!-- Section Header -->
     <div class="text-center mb-16">
-      <span class="inline-block text-blue-400 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
-        ✦ Verified & Trusted ✦
-      </span>
-      <h2 class="text-primaryText text-4xl sm:text-5xl 2xl:text-6xl font-bold tracking-tight leading-tight">
-        Officially
-        <span class="bg-gradient-to-r from-orange-200 to-orange-300 bg-clip-text text-transparent"> Recognized</span>
+      <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-5">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+        <span class="text-blue-600 text-xs font-semibold tracking-[0.2em] uppercase">What We Offer</span>
+      </div>
+      <h2 class="text-gray-900 text-4xl sm:text-5xl font-bold tracking-tight">
+        Our <span class="text-blue-900">Services</span>
       </h2>
-      <p class="mt-4 text-gray-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-        Our company stands on a foundation of legal compliance, financial integrity, and government-verified credentials.
+      <p class="mt-4 text-gray-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        Comprehensive industrial solutions designed to accelerate investment, streamline operations, and drive sustainable growth.
       </p>
     </div>
 
-    <!-- Cards Row -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <!-- TOP ROW — 3 Featured Service Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-6">
 
-      <!-- FBR Card -->
-      <div class="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 hover:border-orange-500/40 hover:bg-white/8 transition-all duration-500">
-        <div class="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-orange-400/60 to-transparent"></div>
-        
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-3 py-1 mb-6">
-          <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span>
-          <span class="text-orange-400 text-xs font-semibold tracking-widest uppercase">Federal</span>
+      <!-- Card: One Window Operations -->
+      <div class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+        <!-- Top accent line -->
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <!-- Image -->
+        <div class="relative h-52 overflow-hidden">
+       <img
+  src="https://fiedmc.com.pk/wp-content/uploads/2026/03/one-window.jpg"
+  alt="One Window Operations"
+  class="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700"
+  onerror="this.style.display='none';"
+/>
+          <!-- Fallback colored bg when no image -->
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-800 to-blue-950 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <!-- Overlay gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
         </div>
 
-        <!-- Logo / Acronym -->
-        <div class="flex items-center gap-4 mb-5">
-          <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-600/20 border border-orange-500/20 flex items-center justify-center">
-            <span class="text-orange-400 text-xl font-black tracking-tight">FBR</span>
+        <!-- Content -->
+        <div class="p-6">
+          <!-- Icon + Title -->
+          <div class="flex items-start gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-blue-900 group-hover:border-blue-900 transition-colors duration-300">
+              <svg class="w-5 h-5 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 class="text-gray-900 text-lg font-bold leading-tight group-hover:text-blue-900 transition-colors duration-300 pt-1">
+              One Window Operations
+            </h3>
           </div>
-          <div>
-            <h3 class="text-white text-lg font-bold leading-tight">Federal Board<br/>of Revenue</h3>
-          </div>
-        </div>
+          <div class="w-10 h-0.5 bg-orange-400 mb-3 ml-13"></div>
 
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Registered and compliant with the Federal Board of Revenue. All tax records are verified and up-to-date under FBR regulations, ensuring full federal tax compliance.
-        </p>
-
-        <!-- Verified tick -->
-        <div class="mt-6 flex items-center gap-2">
-          <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-          </svg>
-          <span class="text-green-400 text-xs font-semibold tracking-wide">Taxpayer Record Satisfied</span>
+          <a href="#"
+            class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-300 mt-1 group/btn">
+            Read More
+            <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
         </div>
       </div>
 
-      <!-- PRA Card -->
-      <div class="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 hover:border-orange-500/40 hover:bg-white/8 transition-all duration-500">
-        <div class="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-orange-400/60 to-transparent"></div>
+      <!-- Card: Special Economic Zone -->
+      <div class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-3 py-1 mb-6">
-          <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span>
-          <span class="text-orange-400 text-xs font-semibold tracking-widest uppercase">Provincial</span>
+        <div class="relative h-52 overflow-hidden">
+              <img
+  src="https://fiedmc.com.pk/wp-content/uploads/2026/02/service-03-1.jpg"
+  alt="One Window Operations"
+  class="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700"
+  onerror="this.style.display='none';"
+/>
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-800 to-blue-950 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+            </svg>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
         </div>
 
-        <!-- Logo / Acronym -->
-        <div class="flex items-center gap-4 mb-5">
-          <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-600/20 border border-orange-500/20 flex items-center justify-center">
-            <span class="text-orange-400 text-xl font-black tracking-tight">PRA</span>
+        <div class="p-6">
+          <div class="flex items-start gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-blue-900 group-hover:border-blue-900 transition-colors duration-300">
+              <svg class="w-5 h-5 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+              </svg>
+            </div>
+            <h3 class="text-gray-900 text-lg font-bold leading-tight group-hover:text-blue-900 transition-colors duration-300 pt-1">
+              Special Economic Zone
+            </h3>
           </div>
-          <div>
-            <h3 class="text-white text-lg font-bold leading-tight">Punjab Revenue<br/>Authority</h3>
+          <div class="w-10 h-0.5 bg-orange-400 mb-3"></div>
+
+          <a href="#"
+            class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-300 mt-1 group/btn">
+            Read More
+            <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card: Projects in Pipeline -->
+      <div class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="relative h-52 overflow-hidden">
+             <img
+  src="https://fiedmc.com.pk/wp-content/uploads/2026/02/project.jpg"
+  alt="One Window Operations"
+  class="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700"
+  onerror="this.style.display='none';"
+/>
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-800 to-blue-950 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+            </svg>
           </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
         </div>
 
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Fully registered with the Punjab Revenue Authority. Our provincial tax obligations are satisfied and actively maintained in compliance with PRA standards.
-        </p>
+        <div class="p-6">
+          <div class="flex items-start gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-blue-900 group-hover:border-blue-900 transition-colors duration-300">
+              <svg class="w-5 h-5 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+              </svg>
+            </div>
+            <h3 class="text-gray-900 text-lg font-bold leading-tight group-hover:text-blue-900 transition-colors duration-300 pt-1">
+              Projects in Pipeline
+            </h3>
+          </div>
+          <div class="w-10 h-0.5 bg-orange-400 mb-3"></div>
 
-        <!-- Verified tick -->
-        <div class="mt-6 flex items-center gap-2">
-          <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-          </svg>
-          <span class="text-green-400 text-xs font-semibold tracking-wide">Taxpayer Record Satisfied</span>
+          <a href="#"
+            class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-300 mt-1 group/btn">
+            Read More
+            <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
         </div>
       </div>
 
     </div>
 
-    <!-- Bottom trust bar -->
-    <div class="mt-14 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
-      <div class="flex items-center gap-3 text-gray-500 text-sm">
-        <svg class="w-5 h-5 text-blue-500/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-        </svg>
-        Government Registered Since 1990
+    <!-- BOTTOM ROW — 4 Secondary Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+
+      <!-- Card: Business Model -->
+      <div class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="relative h-40 overflow-hidden">
+              <img
+  src="https://i.pinimg.com/736x/54/95/3c/54953ccbea5b0d2072d5562b97ac9b86.jpg"
+  alt="One Window Operations"
+  class="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700"
+  onerror="this.style.display='none';"
+/>
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-800 to-blue-950 flex items-center justify-center">
+            <svg class="w-12 h-12 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+        </div>
+
+        <div class="p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-900 group-hover:border-blue-900 transition-colors duration-300">
+              <svg class="w-4 h-4 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <h3 class="text-gray-900 text-base font-bold group-hover:text-blue-900 transition-colors duration-300">Business Model</h3>
+          </div>
+          <div class="w-8 h-0.5 bg-orange-400 mb-3 ml-10"></div>
+          <a href="#"
+            class="inline-flex items-center gap-1.5 bg-blue-900 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all duration-300 group/btn">
+            Read More
+            <svg class="w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
       </div>
-      <div class="hidden sm:block w-px h-5 bg-white/10"></div>
-      <div class="flex items-center gap-3 text-gray-500 text-sm">
-        <svg class="w-5 h-5 text-blue-500/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-        </svg>
-        All Tax Records Up-to-Date
+
+      <!-- Card: Incentive Package -->
+      <div class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="relative h-40 overflow-hidden">
+              <img
+  src="https://i.pinimg.com/736x/da/66/1b/da661b11ffa33245c8806da1542dc3ab.jpg"
+  alt="One Window Operations"
+  class="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700"
+  onerror="this.style.display='none';"
+/>
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-800 to-blue-950 flex items-center justify-center">
+            <svg class="w-12 h-12 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+        </div>
+
+        <div class="p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-900 group-hover:border-blue-900 transition-colors duration-300">
+              <svg class="w-4 h-4 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-gray-900 text-base font-bold group-hover:text-blue-900 transition-colors duration-300">Incentive Package</h3>
+          </div>
+          <div class="w-8 h-0.5 bg-orange-400 mb-3 ml-10"></div>
+          <a href="#"
+            class="inline-flex items-center gap-1.5 bg-blue-900 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all duration-300 group/btn">
+            Read More
+            <svg class="w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
       </div>
-      <div class="hidden sm:block w-px h-5 bg-white/10"></div>
-      <div class="flex items-center gap-3 text-gray-500 text-sm">
-        <svg class="w-5 h-5 text-blue-500/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
-        </svg>
-        Fully Compliant Operations
+
+      <!-- Card: Major Industrial Sectors -->
+      <div class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="relative h-40 overflow-hidden">
+              <img
+  src="https://i.pinimg.com/736x/0f/87/93/0f879394f705c420871d27c7a690c788.jpg"
+  alt="One Window Operations"
+  class="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700"
+  onerror="this.style.display='none';"
+/>
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-800 to-blue-950 flex items-center justify-center">
+            <svg class="w-12 h-12 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"/>
+            </svg>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+        </div>
+
+        <div class="p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-900 group-hover:border-blue-900 transition-colors duration-300">
+              <svg class="w-4 h-4 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1"/>
+              </svg>
+            </div>
+            <h3 class="text-gray-900 text-base font-bold group-hover:text-blue-900 transition-colors duration-300">Major Industrial Sectors</h3>
+          </div>
+          <div class="w-8 h-0.5 bg-orange-400 mb-3 ml-10"></div>
+          <a href="#"
+            class="inline-flex items-center gap-1.5 bg-blue-900 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all duration-300 group/btn">
+            Read More
+            <svg class="w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
       </div>
+
+      <!-- Card: Environmental Services -->
+      <div class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="relative h-40 overflow-hidden">
+              <img
+  src="https://i.pinimg.com/736x/87/e6/65/87e665be3aa31f563b58adc2715c417f.jpg"
+  alt="One Window Operations"
+  class="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700"
+  onerror="this.style.display='none';"
+/>
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-800 to-blue-950 flex items-center justify-center">
+            <svg class="w-12 h-12 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+        </div>
+
+        <div class="p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-900 group-hover:border-blue-900 transition-colors duration-300">
+              <svg class="w-4 h-4 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-gray-900 text-base font-bold group-hover:text-blue-900 transition-colors duration-300">Environmental Services</h3>
+          </div>
+          <div class="w-8 h-0.5 bg-orange-400 mb-3 ml-10"></div>
+          <a href="#"
+            class="inline-flex items-center gap-1.5 bg-blue-900 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all duration-300 group/btn">
+            Read More
+            <svg class="w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
     </div>
 
   </div>
 
-  <!-- Bottom border accent -->
-  <div class="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
 </section>

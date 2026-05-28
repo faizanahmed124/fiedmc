@@ -1,177 +1,518 @@
 ---
-import TailcastLogo from '../assets/logos/TailcastLogo.astro';
-import GithubIcon from '../assets/icons/GithubIcon.astro';
-
 import logo from '../assets/images/logo.jpeg';
 import { Image } from 'astro:assets';
+
 const navbarLinks = [
-{ label: 'Home',     href: '/#home'     },
-{ label: 'About',    href: '/about'     },
-{ label: 'Services', href: '/services'  },
-{ label: 'projects', href: '/projects'  },
-{ label: 'Careers',  href: '/careers'   },
-{ label: 'Contact',  href: '/contact'   },
+  { label: 'Home',                 href: '/#home'                },
+  { label: 'About Us',             href: '/about',      hasDropdown: true,
+    children: [
+      { label: 'Overview',         href: '/about/overview'       },
+      { label: 'Board of Directors', href: '/about/board'        },
+      { label: 'Management Team',  href: '/about/management'     },
+      { label: 'Vision & Mission', href: '/about/vision'         },
+    ]
+  },
+  { label: 'One Window Solutions', href: '/one-window-solutions' },
+  { label: 'Projects',             href: '/projects',   hasDropdown: true,
+    children: [
+      { label: 'M-3 Industrial City', href: '/projects/m3'       },
+      { label: 'Ongoing Projects',    href: '/projects/ongoing'  },
+      { label: 'Completed Projects',  href: '/projects/completed'},
+    ]
+  },
+  { label: 'News & Events',        href: '/news',       hasDropdown: true,
+    children: [
+      { label: 'Latest News',      href: '/news/latest'          },
+      { label: 'Press Releases',   href: '/news/press'           },
+      { label: 'Events',           href: '/news/events'          },
+    ]
+  },
+  { label: 'Contact',              href: '/contact'              },
 ];
 
 const currentPath = Astro.url.pathname;
-const isHomepage = currentPath === '/' || currentPath === '/index.html';
+const isHomepage   = currentPath === '/' || currentPath === '/index.html';
 
 const isActive = (href: string) => {
   if (href.startsWith('/#')) return false;
   return currentPath.startsWith(href);
-}
+};
 ---
 
+<!-- ── TOP INFO BAR ─────────────────────────────────────────── -->
+<div class="fiedmc-topbar">
+  <div class="fiedmc-topbar-inner">
+    <div class="fiedmc-contacts">
+      <a href="mailto:fiedmc@fiedmc.com.pk" class="fiedmc-contact-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect width="20" height="16" x="2" y="4" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        fiedmc@fiedmc.com.pk
+      </a>
+      <span class="fiedmc-contact-item fiedmc-hide-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        M-3 Industrial City Near Sahianwala Interchange
+      </span>
+      <a href="tel:+924148900204" class="fiedmc-contact-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17Z"/>
+        </svg>
+        +92-41-8900204
+      </a>
+    </div>
+    <span class="fiedmc-govt-badge">Government of Punjab</span>
+  </div>
+</div>
+
+<!-- ── MAIN NAVBAR ─────────────────────────────────────────── -->
 <nav
-  class={`w-full h-20 flex flex-col justify-center items-center fixed z-40 transition-all duration-300 ${!isHomepage ? 'bg-bgDark1/70 backdrop-blur-[15px]' : ''}`}
+  class={`fiedmc-nav ${!isHomepage ? 'fiedmc-nav--solid' : ''}`}
   id="main-nav"
   data-homepage={isHomepage ? 'true' : 'false'}
   aria-label="Main navigation"
 >
-  <div class="relative flex w-11/12 items-center justify-between xl:w-10/12 2xl:w-7xl">
-    <div>
-     <a href="#home" aria-label="Home">
-  <div class="flex grow basis-0 items-center justify-start">
-    <Image
-      src={logo}
-      alt="Umar & Company Logo"
-      width={120}
-      height={88}
-      class="navbar-logo"
-      loading="eager"
-    />
-  </div>
-</a>
-    </div>
-    <div>
-      <div class="hidden h-full pl-12 lg:flex">
-        {
-          navbarLinks.map(({ href, label }) => (
-            <a
-              class={`relative flex h-20 cursor-pointer items-center px-4 text-2xl leading-6 font-normal text-white transition duration-200 hover:text-indigo-200 focus-visible:outline-offset-[-4px] lg:text-base lg:font-medium 2xl:px-6`}
-              href={href}
-              {...(isActive(href) ? { 'aria-current': 'page' } : {})}
+  <div class="fiedmc-nav-inner">
+
+    <!-- Logo -->
+    <a href="/#home" class="fiedmc-logo-link" aria-label="FIEDMC Home">
+      <div class="fiedmc-logo-emblem" aria-hidden="true">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2"  y="18" width="6"  height="12" rx=".5"/>
+          <rect x="10" y="12" width="6"  height="18" rx=".5"/>
+          <rect x="18" y="8"  width="6"  height="22" rx=".5"/>
+          <rect x="26" y="14" width="4"  height="16" rx=".5"/>
+          <rect x="0"  y="29" width="32" height="1.5" rx=".5"/>
+          <rect x="6"  y="4"  width="2"  height="6"  rx=".5"/>
+          <polygon points="7,1 9.5,6 4.5,6"/>
+        </svg>
+      </div>
+      <div class="fiedmc-logo-text">
+        <span class="fiedmc-logo-name">FIEDMC</span>
+        <span class="fiedmc-logo-tagline">Faisalabad Industrial Estate</span>
+      </div>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="fiedmc-desktop-links" role="menubar">
+      {navbarLinks.map(({ href, label, hasDropdown, children }) =>
+        hasDropdown && children ? (
+          <div class="fiedmc-dropdown-wrap" role="none">
+            <button
+              class={`fiedmc-nav-link fiedmc-nav-link--btn ${isActive(href) ? 'fiedmc-nav-link--active' : ''}`}
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-dropdown
+              role="menuitem"
             >
               {label}
-              {isActive(href) && (
-                <span class="bg-secondaryColor absolute right-0 bottom-0 left-0 h-0.5 rounded-full" />
-              )}
-            </a>
-          ))
-        }
-      </div>
+              <svg class="fiedmc-chevron" xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+              {isActive(href) && <span class="fiedmc-active-bar" aria-hidden="true" />}
+            </button>
+            <div class="fiedmc-dropdown" role="menu" aria-label={label}>
+              {children.map(child => (
+                <a class="fiedmc-dropdown-item" href={child.href} role="menuitem">
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a
+            class={`fiedmc-nav-link ${isActive(href) ? 'fiedmc-nav-link--active' : ''}`}
+            href={href}
+            role="menuitem"
+            {...(isActive(href) ? { 'aria-current': 'page' } : {})}
+          >
+            {label}
+            {isActive(href) && <span class="fiedmc-active-bar" aria-hidden="true" />}
+          </a>
+        )
+      )}
     </div>
-    <div>
-  
+
+    <!-- Desktop CTA -->
+    <div class="fiedmc-desktop-cta">
+      <a href="/invest" class="fiedmc-cta-btn">Invest Now</a>
     </div>
+
+    <!-- Mobile toggle -->
     <button
-      class="border-mainBorder hover:bg-bgDark2 flex cursor-pointer flex-col rounded-md border border-solid px-2 py-3 lg:hidden"
+      class="fiedmc-mobile-toggle"
       id="mobile-menu-toggle"
-      aria-label="Toggle menu"
+      aria-label="Toggle navigation menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
-      <div class="mb-1 h-0.5 w-5 bg-gray-500"></div>
-      <div class="mb-1 h-0.5 w-5 bg-gray-500"></div>
-      <div class="h-0.5 w-5 bg-gray-500"></div>
+      <span class="fiedmc-bar" aria-hidden="true"></span>
+      <span class="fiedmc-bar" aria-hidden="true"></span>
+      <span class="fiedmc-bar" aria-hidden="true"></span>
     </button>
   </div>
-  <!-- Mobile menu overlay -->
-  <div class="fixed inset-0 top-20 z-40 hidden lg:hidden" id="mobile-menu-overlay"></div>
-  <!-- Mobile navbar -->
+
+  <!-- Mobile overlay -->
+  <div class="fiedmc-mobile-overlay hidden" id="mobile-menu-overlay" aria-hidden="true"></div>
+
+  <!-- Mobile menu -->
   <div
-    class="bg-bgDark1 border-bgDark3 absolute top-4 left-0 z-50 mt-16 hidden w-full flex-col items-center gap-10 border-y border-solid pt-10 pb-10 lg:hidden"
+    class="fiedmc-mobile-menu hidden"
     id="mobile-menu"
+    role="menu"
+    aria-label="Mobile navigation"
   >
-    {
-      navbarLinks.map(({ label, href }) => (
-        <a
-          class="mobile-nav-link mr-4 ml-4 h-full cursor-pointer pt-2 text-2xl leading-6 font-normal text-white transition duration-300 hover:scale-110 lg:text-base lg:font-medium 2xl:mr-6 2xl:ml-6"
-          href={href}
-        >
-          {label}
-        </a>
-      ))
-    }
-  
+    {navbarLinks.map(({ href, label, children }) =>
+      children ? (
+        <div class="fiedmc-mob-group">
+          <button class="fiedmc-mob-parent" data-mob-dropdown aria-expanded="false">
+            {label}
+            <svg class="fiedmc-mob-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="fiedmc-mob-children hidden">
+            {children.map(child => (
+              <a class="fiedmc-mob-child mobile-nav-link" href={child.href} role="menuitem">
+                › {child.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a class="fiedmc-mob-link mobile-nav-link" href={href} role="menuitem">{label}</a>
+      )
+    )}
+    <a href="/invest" class="fiedmc-mob-cta mobile-nav-link">Invest in FIEDMC →</a>
   </div>
 </nav>
 
+<!-- ── STYLES ──────────────────────────────────────────────── -->
+<style>
+  /* ── Variables ── */
+  :root {
+    --fn:      #0B2447;
+    --fn-dark: #071833;
+    --fn-mid:  #163A6E;
+    --fg:      #C9A84C;
+    --fg-l:    #E8C97A;
+    --fw:      #FFFFFF;
+    --fborder: #E2E6EA;
+    --fmuted:  #6B7A8D;
+    --fsans:   'Segoe UI', system-ui, -apple-system, sans-serif;
+    --fserif:  'Georgia', 'Times New Roman', serif;
+  }
+
+  /* ── TOP BAR ── */
+  .fiedmc-topbar {
+    background: var(--fn-dark);
+    border-bottom: 2px solid var(--fg);
+    padding: 7px 0;
+  }
+  .fiedmc-topbar-inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+  .fiedmc-contacts { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .fiedmc-contact-item {
+    display: flex; align-items: center; gap: 6px;
+    font: 400 12px/1 var(--fsans); color: rgba(255,255,255,.72);
+    text-decoration: none; letter-spacing: .01em; transition: color .2s;
+  }
+  .fiedmc-contact-item svg { color: var(--fg); flex-shrink: 0; }
+  .fiedmc-contact-item:hover { color: var(--fg-l); }
+  .fiedmc-govt-badge {
+    background: var(--fg); color: var(--fn-dark);
+    font: 700 10px/1 var(--fsans); letter-spacing: .08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 2px;
+  }
+  @media (max-width: 600px) { .fiedmc-hide-sm { display: none !important; } }
+
+  /* ── MAIN NAV ── */
+  .fiedmc-nav {
+    background: var(--fw);
+    border-bottom: 1px solid var(--fborder);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(11,36,71,.07);
+    transition: background .3s, backdrop-filter .3s;
+  }
+  .fiedmc-nav--solid { background: rgba(255,255,255,.95); backdrop-filter: blur(14px); }
+
+  .fiedmc-nav-inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
+    display: flex; align-items: center; justify-content: space-between; height: 72px;
+  }
+
+  /* Logo */
+  .fiedmc-logo-link { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+  .fiedmc-logo-emblem {
+    width: 52px; height: 52px; background: var(--fn);
+    border-radius: 50%; border: 2px solid var(--fg);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .fiedmc-logo-emblem svg { width: 26px; height: 26px; fill: var(--fg); }
+  .fiedmc-logo-text { display: flex; flex-direction: column; }
+  .fiedmc-logo-name {
+    font: 700 20px/1 var(--fserif); color: var(--fn);
+    letter-spacing: .04em;
+  }
+  .fiedmc-logo-tagline {
+    font: 600 10px/1 var(--fsans); color: var(--fmuted);
+    letter-spacing: .06em; text-transform: uppercase; margin-top: 3px;
+  }
+
+  /* Desktop nav links */
+  .fiedmc-desktop-links { display: flex; align-items: center; gap: 2px; }
+  .fiedmc-nav-link {
+    position: relative;
+    font: 600 13.5px/1 var(--fsans); color: var(--fn);
+    text-decoration: none; padding: 8px 13px; border-radius: 3px;
+    white-space: nowrap; letter-spacing: .01em;
+    transition: background .15s, color .15s;
+  }
+  .fiedmc-nav-link--btn {
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .fiedmc-nav-link:hover,
+  .fiedmc-nav-link--btn:hover { background: rgba(11,36,71,.07); }
+  .fiedmc-nav-link--active { color: var(--fn-dark); font-weight: 700; }
+  .fiedmc-active-bar {
+    position: absolute; bottom: 0; left: 6px; right: 6px;
+    height: 2px; background: var(--fg); border-radius: 1px;
+  }
+  .fiedmc-chevron { transition: transform .2s; flex-shrink: 0; }
+  .fiedmc-nav-link--btn[aria-expanded="true"] .fiedmc-chevron { transform: rotate(180deg); }
+
+  /* Dropdown */
+  .fiedmc-dropdown-wrap { position: relative; }
+  .fiedmc-dropdown {
+    position: absolute; top: calc(100% + 4px); left: 0;
+    background: var(--fw); border: 1px solid var(--fborder);
+    border-top: 2px solid var(--fg); border-radius: 0 0 5px 5px;
+    box-shadow: 0 8px 24px rgba(11,36,71,.12);
+    min-width: 210px; padding: 6px 0; z-index: 200;
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity .18s, transform .18s, visibility .18s;
+  }
+  .fiedmc-dropdown-wrap:hover .fiedmc-dropdown,
+  .fiedmc-dropdown-wrap:focus-within .fiedmc-dropdown,
+  .fiedmc-dropdown-wrap.open .fiedmc-dropdown {
+    opacity: 1; visibility: visible; transform: translateY(0);
+  }
+  .fiedmc-dropdown-item {
+    display: block; padding: 10px 18px;
+    font: 400 13px/1 var(--fsans); color: #374151; text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: background .12s, color .12s, border-color .12s;
+  }
+  .fiedmc-dropdown-item:hover {
+    background: rgba(11,36,71,.05); color: var(--fn);
+    border-left-color: var(--fg);
+  }
+
+  /* Desktop CTA */
+  .fiedmc-desktop-cta { display: flex; gap: 10px; align-items: center; }
+  .fiedmc-cta-btn {
+    background: var(--fn); color: var(--fw);
+    font: 600 13px/1 var(--fsans); letter-spacing: .02em;
+    padding: 9px 20px; border-radius: 3px; text-decoration: none;
+    border: 2px solid var(--fn); white-space: nowrap;
+    display: inline-flex; align-items: center;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .fiedmc-cta-btn:hover {
+    background: var(--fg); border-color: var(--fg); color: var(--fn-dark);
+  }
+
+  /* Mobile toggle */
+  .fiedmc-mobile-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 6px; border-radius: 3px;
+    transition: background .15s;
+  }
+  .fiedmc-mobile-toggle:hover { background: rgba(11,36,71,.07); }
+  .fiedmc-bar { width: 22px; height: 2px; background: var(--fn); border-radius: 1px; display: block; transition: transform .25s, opacity .2s; }
+
+  /* Mobile menu */
+  .fiedmc-mobile-overlay {
+    position: fixed; inset: 0; top: 108px; z-index: 90;
+    background: rgba(0,0,0,.25);
+  }
+  .fiedmc-mobile-menu {
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 95;
+    background: var(--fw); border-top: 2px solid var(--fg);
+    box-shadow: 0 8px 24px rgba(11,36,71,.12);
+  }
+  .fiedmc-mob-link {
+    display: block; padding: 14px 1.5rem;
+    font: 600 15px/1 var(--fsans); color: var(--fn);
+    text-decoration: none; border-bottom: 1px solid var(--fborder);
+    transition: color .15s, background .15s;
+  }
+  .fiedmc-mob-link:hover { color: var(--fg); background: rgba(11,36,71,.03); }
+  .fiedmc-mob-group { border-bottom: 1px solid var(--fborder); }
+  .fiedmc-mob-parent {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 14px 1.5rem;
+    font: 600 15px/1 var(--fsans); color: var(--fn);
+    background: none; border: none; cursor: pointer;
+    transition: color .15s, background .15s;
+  }
+  .fiedmc-mob-parent:hover { color: var(--fg); background: rgba(11,36,71,.03); }
+  .fiedmc-mob-chevron { transition: transform .2s; flex-shrink: 0; }
+  .fiedmc-mob-parent[aria-expanded="true"] .fiedmc-mob-chevron { transform: rotate(180deg); }
+  .fiedmc-mob-children { background: #F8F9FA; }
+  .fiedmc-mob-child {
+    display: block; padding: 11px 2.5rem;
+    font: 400 13.5px/1 var(--fsans); color: #4B5563;
+    text-decoration: none; border-bottom: 1px solid rgba(226,230,234,.5);
+    transition: color .12s;
+  }
+  .fiedmc-mob-child:hover { color: var(--fn); }
+  .fiedmc-mob-cta {
+    display: block; margin: 16px 1.5rem 20px;
+    background: var(--fn); color: var(--fw);
+    font: 600 14px/1 var(--fsans); text-decoration: none;
+    padding: 13px; text-align: center; border-radius: 3px;
+    transition: background .15s;
+  }
+  .fiedmc-mob-cta:hover { background: var(--fg); color: var(--fn-dark); }
+
+  /* Responsive breakpoints */
+  @media (max-width: 960px) {
+    .fiedmc-desktop-links { display: none; }
+    .fiedmc-desktop-cta   { display: none; }
+    .fiedmc-mobile-toggle { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .fiedmc-topbar-inner { gap: 6px; }
+    .fiedmc-contacts { gap: 10px; }
+    .fiedmc-contact-item { font-size: 11px; }
+  }
+</style>
+
+<!-- ── SCRIPT ───────────────────────────────────────────────── -->
 <script>
   const initNavbar = () => {
-    const toggle = document.getElementById('mobile-menu-toggle');
-    const menu = document.getElementById('mobile-menu');
+    const toggle  = document.getElementById('mobile-menu-toggle') as HTMLButtonElement | null;
+    const menu    = document.getElementById('mobile-menu');
     const overlay = document.getElementById('mobile-menu-overlay');
-    const nav = document.getElementById('main-nav');
+    const nav     = document.getElementById('main-nav');
 
     const isHomepage = nav?.dataset.homepage === 'true';
 
-    const updateNavBackground = () => {
+    /* ── Scroll-based transparent → solid (homepage only) ── */
+    const updateBg = () => {
       if (!isHomepage) return;
       if (window.scrollY > 50) {
-        nav?.classList.add('bg-bgDark1/70', 'backdrop-blur-[15px]');
+        nav?.classList.add('fiedmc-nav--solid');
       } else {
-        nav?.classList.remove('bg-bgDark1/70', 'backdrop-blur-[15px]');
+        nav?.classList.remove('fiedmc-nav--solid');
       }
     };
+    if (isHomepage) { updateBg(); window.addEventListener('scroll', updateBg, { passive: true }); }
 
-    if (isHomepage) {
-      updateNavBackground();
-      window.addEventListener('scroll', updateNavBackground);
-    }
-
-    const openMenu = () => {
+    /* ── Mobile menu open / close ── */
+    const openMenu  = () => {
       menu?.classList.remove('hidden');
-      menu?.classList.add('flex');
       overlay?.classList.remove('hidden');
-      overlay?.classList.add('block');
       toggle?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
     };
-
     const closeMenu = () => {
       menu?.classList.add('hidden');
-      menu?.classList.remove('flex');
       overlay?.classList.add('hidden');
-      overlay?.classList.remove('block');
       toggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     };
 
-    toggle?.addEventListener('click', () => {
-      const isOpen = menu?.classList.contains('flex');
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
+    toggle?.addEventListener('click', () =>
+      menu?.classList.contains('hidden') ? openMenu() : closeMenu()
+    );
     overlay?.addEventListener('click', closeMenu);
 
-    document.querySelectorAll('.mobile-nav-link').forEach((link) => {
-      link.addEventListener('click', closeMenu);
+    /* ── Mobile accordion dropdowns ── */
+    document.querySelectorAll<HTMLButtonElement>('[data-mob-dropdown]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent   = btn.closest('.fiedmc-mob-group');
+        const children = parent?.querySelector('.fiedmc-mob-children');
+        const isOpen   = !children?.classList.contains('hidden');
+        if (isOpen) {
+          children?.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          children?.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
     });
 
-    // Escape closes mobile menu
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu?.classList.contains('flex')) {
-        closeMenu();
-        toggle?.focus();
+    /* ── Desktop click-toggle dropdowns (keyboard-friendly) ── */
+    document.querySelectorAll<HTMLButtonElement>('[data-dropdown]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const wrap = btn.closest('.fiedmc-dropdown-wrap');
+        const isOpen = wrap?.classList.contains('open');
+        // Close all first
+        document.querySelectorAll('.fiedmc-dropdown-wrap.open').forEach(w => {
+          w.classList.remove('open');
+          w.querySelector<HTMLButtonElement>('[data-dropdown]')?.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          wrap?.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* Close desktop dropdown on outside click */
+    document.addEventListener('click', (e) => {
+      if (!(e.target as Element).closest('.fiedmc-dropdown-wrap')) {
+        document.querySelectorAll('.fiedmc-dropdown-wrap.open').forEach(w => {
+          w.classList.remove('open');
+          w.querySelector<HTMLButtonElement>('[data-dropdown]')?.setAttribute('aria-expanded', 'false');
+        });
       }
     });
 
-    // Focus trap in mobile menu
-    menu?.addEventListener('keydown', (e) => {
+    /* Close mobile menu on nav-link click */
+    document.querySelectorAll('.mobile-nav-link').forEach(link =>
+      link.addEventListener('click', closeMenu)
+    );
+
+    /* Escape key */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+        toggle?.focus();
+        document.querySelectorAll('.fiedmc-dropdown-wrap.open').forEach(w => {
+          w.classList.remove('open');
+          w.querySelector<HTMLButtonElement>('[data-dropdown]')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    /* Focus trap inside mobile menu */
+    menu?.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return;
-      const focusable = menu.querySelectorAll<HTMLElement>('a, button');
+      const focusable = menu.querySelectorAll<HTMLElement>('a[href], button');
       if (!focusable.length) return;
       const first = focusable[0];
-      const last = focusable[focusable.length - 1];
+      const last  = focusable[focusable.length - 1];
       if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
+        e.preventDefault(); last.focus();
       } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
+        e.preventDefault(); first.focus();
       }
     });
   };

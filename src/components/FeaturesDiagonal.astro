@@ -1,89 +1,193 @@
 ---
-import { Image } from 'astro:assets';
 import featuresdiagonal from '../assets/images/featuresdiagonal.jpg';
+import featuresdiagonal1 from '../assets/images/featuresdiagonal1.jpg';
+import featuresdiagonal2 from '../assets/images/featuresdiagonal2.jpg';
+import featuresdiagonal3 from '../assets/images/featuresdiagonal3.jpg';
+
+
+const projects = [
+  {
+    id:       "m3",
+    tag:      "Flagship Project",
+    title:    "M-3 Industrial City",
+    location: "Near Sahianwala Interchange, Faisalabad",
+    area:     "4,600 Acres",
+    status:   "Operational",
+    statusClass: "status-active",
+    industries: "1,200+",
+    desc:     "Pakistan's largest integrated industrial estate offering world-class infrastructure, utilities, and logistics connectivity to domestic and international manufacturers.",
+    tags:     ["Textiles", "Engineering", "Food Processing", "Pharmaceuticals"],
+    href:     "/projects/m3",
+    imgSrc:   featuresdiagonal,   // ← replace with actual M-3 image
+  },
+  {
+    id:       "vac",
+    tag:      "Upcoming Project",
+    title:    "Value Addition City",
+    location: "Faisalabad, Punjab",
+    area:     "1,200 Acres",
+    status:   "Under Development",
+    statusClass: "status-dev",
+    industries: "500+",
+    desc:     "A dedicated zone for value-added manufacturing and export-oriented industries, designed to boost Punjab's industrial output and foreign exchange earnings.",
+    tags:     ["Value-Added Manufacturing", "Export Zone", "Warehousing"],
+    href:     "/projects/value-addition-city",
+    imgSrc:   featuresdiagonal1,   // ← replace with actual VAC image
+  },
+  {
+    id:       "aiic",
+    tag:      "New Development",
+    title:    "Allama Iqbal Industrial City",
+    location: "Lahore, Punjab",
+    area:     "3,000 Acres",
+    status:   "Planning Phase",
+    statusClass: "status-plan",
+    industries: "800+",
+    desc:     "Strategically located near Lahore, this city will serve as a technology and innovation hub attracting high-tech industries and knowledge-based enterprises.",
+    tags:     ["Technology", "High-Tech Manufacturing", "Innovation Hub"],
+    href:     "/projects/allama-iqbal-industrial-city",
+    imgSrc:   featuresdiagonal2,   // ← replace with actual AIIC image
+  },
+  {
+    id:       "sez",
+    tag:      "Special Zone",
+    title:    "FIEDMC Special Economic Zone",
+    location: "M-3 Industrial City, Faisalabad",
+    area:     "800 Acres",
+    status:   "Operational",
+    statusClass: "status-active",
+    industries: "200+",
+    desc:     "A government-gazetted SEZ offering 10-year income tax holidays, duty-free machinery imports, and state-of-the-art facilities for export-oriented enterprises.",
+    tags:     ["Tax Holiday", "Duty-Free Import", "Export Oriented"],
+    href:     "/projects/sez",
+    imgSrc:   featuresdiagonal3,   // ← replace with actual SEZ image
+  },
+];
 ---
 
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" /> -->
+<section id="projects" class="pj-section">
 
-<section id="mission" class="mv-section">
+  <!-- ── Decorative background ── -->
+  <div class="pj-bg-pattern" aria-hidden="true"></div>
+  <div class="pj-bg-blob pj-bg-blob--tl" aria-hidden="true"></div>
+  <div class="pj-bg-blob pj-bg-blob--br" aria-hidden="true"></div>
 
-  <!-- Dark grid line background -->
-  <div class="mv-grid" aria-hidden="true"></div>
+  <div class="pj-inner">
 
-  <!-- Glow blobs -->
-  <div class="mv-blob mv-blob--tl" aria-hidden="true"></div>
-  <div class="mv-blob mv-blob--br" aria-hidden="true"></div>
-
-  <div class="mv-container">
-
-    <!-- LEFT: Text Content -->
-    <div class="mv-content">
-
-      <div class="mv-eyebrow">
-        <span class="mv-eyebrow__dot"></span>
-        Our Purpose
-        <span class="mv-eyebrow__dot"></span>
-      </div>
-
-      <h2 class="mv-heading">
-        Mission &amp;<br/>
-        <span class="mv-heading--accent">Vision</span>
-      </h2>
-
-      <p class="mv-body">
-        Since 1990, we have built Pakistan's skyline with unmatched precision and dedication.
-        Our mission is to deliver construction excellence that stands the test of time —
-        structures built not just with steel and concrete, but with integrity and craft.
+    <!-- ── Section Header ── -->
+    <div class="pj-header" data-anim="fade-up">
+      <span class="pj-eyebrow">
+        <span class="pj-eyebrow-bar"></span>
+        Industrial Infrastructure
+        <span class="pj-eyebrow-bar"></span>
+      </span>
+      <h2 class="pj-h2">Our <em>Projects</em></h2>
+      <div class="pj-divider"></div>
+      <p class="pj-lead">
+        FIEDMC develops and manages world-class industrial cities and special
+        economic zones across Punjab — driving investment, employment, and
+        economic growth for Pakistan.
       </p>
-
-      <p class="mv-body">
-        Our vision is a Pakistan where every building reflects world-class standards.
-        We empower our trained workforce, embrace modern techniques, and uphold
-        the trust our clients place in us — project after project, city after city.
-      </p>
-
-      <!-- Stats row -->
-      <div class="mv-stats">
-        <div class="mv-stat">
-          <span class="mv-stat__num">35+</span>
-          <span class="mv-stat__label">Years Experience</span>
-        </div>
-        <div class="mv-stat__divider"></div>
-        <div class="mv-stat">
-          <span class="mv-stat__num">500+</span>
-          <span class="mv-stat__label">Projects Completed</span>
-        </div>
-        <div class="mv-stat__divider"></div>
-        <div class="mv-stat">
-          <span class="mv-stat__num">100%</span>
-          <span class="mv-stat__label">FBR &amp; PRA Verified</span>
-        </div>
-      </div>
-
-      <a href="#contact" class="mv-btn">
-        Get Started
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
     </div>
 
-    <!-- RIGHT: Image + floating badge -->
-    <div class="mv-image-wrap">
-      <div class="mv-image-frame">
-      <Image
-  src={featuresdiagonal}
-  alt="Feature image"
-  class="mv-image"
-/>
-        <div class="mv-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-          <div>
-            <p class="mv-badge__title">Government Verified</p>
-            <p class="mv-badge__sub">FBR &amp; PRA Certified</p>
-          </div>
+    <!-- ── Stats Strip ── -->
+    <div class="pj-stats-strip" data-anim="fade-up" style="transition-delay:.12s">
+      {[
+        { num:"4",      lbl:"Industrial Cities"   },
+        { num:"8,600+", lbl:"Total Acres"          },
+        { num:"3,000+", lbl:"Registered Units"     },
+        { num:"$2B+",   lbl:"Investment Attracted" },
+      ].map(s => (
+        <div class="pj-strip-item">
+          <strong>{s.num}</strong>
+          <span>{s.lbl}</span>
         </div>
-        <div class="mv-corner" aria-hidden="true"></div>
+      ))}
+    </div>
+
+    <!-- ── Project Cards ── -->
+    <div class="pj-grid">
+      {projects.map((p, i) => (
+        <article
+          class="pj-card"
+          data-anim="fade-up"
+          style={`transition-delay:${0.10 + i * 0.12}s`}
+        >
+          <!-- Image -->
+          <div class="pj-card-img-wrap">
+            <img
+              src={typeof p.imgSrc === 'string' ? p.imgSrc : p.imgSrc.src}
+              alt={p.title}
+              class="pj-card-img"
+              width="600"
+              height="180"
+              loading={i < 2 ? "eager" : "lazy"}
+              decoding="async"
+            />
+            <div class="pj-img-overlay" aria-hidden="true"></div>
+
+            <!-- Tag -->
+            <span class="pj-card-tag">{p.tag}</span>
+
+            <!-- Status badge -->
+            <span class={`pj-status ${p.statusClass}`}>
+              <span class="pj-status-dot" aria-hidden="true"></span>
+              {p.status}
+            </span>
+          </div>
+
+          <!-- Body -->
+          <div class="pj-card-body">
+
+            <div class="pj-card-meta">
+              <span class="pj-meta-item">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                {p.location}
+              </span>
+              <span class="pj-meta-item">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                {p.area}
+              </span>
+              <span class="pj-meta-item">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                {p.industries} Industries
+              </span>
+            </div>
+
+            <h3 class="pj-card-title">{p.title}</h3>
+            <div class="pj-card-divider"></div>
+            <p class="pj-card-desc">{p.desc}</p>
+
+            <!-- Industry tags -->
+            <div class="pj-card-tags">
+              {p.tags.map(t => <span>{t}</span>)}
+            </div>
+
+            <a href={p.href} class="pj-card-cta">
+              View Details
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- ── Bottom CTA ── -->
+    <div class="pj-bottom-cta" data-anim="fade-up" style="transition-delay:.5s">
+      <div class="pj-cta-box">
+        <div class="pj-cta-text">
+          <h3>Interested in Investing at FIEDMC?</h3>
+          <p>Explore plot allocation, SEZ registration, and investment opportunities across all our industrial cities.</p>
+        </div>
+        <div class="pj-cta-btns">
+          <a href="/invest" class="pj-btn-gold">
+            Apply for Investment
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/one-window-solutions" class="pj-btn-outline">
+            One Window Solutions
+          </a>
+        </div>
       </div>
     </div>
 
@@ -91,245 +195,283 @@ import featuresdiagonal from '../assets/images/featuresdiagonal.jpg';
 </section>
 
 <style>
-  .mv-section {
+  /* ── Tokens ── */
+  :root {
+    --pg:    #C4952A;
+    --pgh:   #D9A83C;
+    --pn:    #071833;
+    --pnm:   #0B2447;
+    --pnl:   #163A6E;
+    --pw:    #FFFFFF;
+    --pbg:   #F4F7FB;
+    --pb2:   #EBF0F8;
+    --pbor:  #DDE3EC;
+    --ptxt:  #6B7A8D;
+    --pdark: #1A2438;
+    --psans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --pser:  'Georgia', 'Times New Roman', serif;
+  }
+
+  /* ── Section ── */
+  .pj-section {
     position: relative;
-    background: #17181b;
-    width: 100%;
-    padding: 6rem 1.5rem;
+    background: var(--pbg);
+    padding: 96px 0 80px;
     overflow: hidden;
-    font-family: 'DM Sans', sans-serif;
   }
 
-  /* Grid lines background */
-  /* .mv-grid {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-  } */
+  /* Subtle dot-grid */
+  .pj-bg-pattern {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle, rgba(11,36,71,.07) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .pj-bg-blob {
+    position: absolute; border-radius: 50%;
+    filter: blur(100px); pointer-events: none; z-index: 0;
+  }
+  .pj-bg-blob--tl {
+    width: 600px; height: 600px; top: -200px; left: -200px;
+    background: rgba(196,149,42,.07);
+  }
+  .pj-bg-blob--br {
+    width: 500px; height: 500px; bottom: -150px; right: -150px;
+    background: rgba(7,24,51,.06);
+  }
 
-  /* Glow blobs */
-  /* .mv-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
+  /* ── Container ── */
+  .pj-inner {
+    position: relative; z-index: 1;
+    max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
+  }
+
+  /* ── Section header ── */
+  .pj-header { text-align: center; margin-bottom: 48px; }
+  .pj-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font: 700 0.7rem/1 var(--psans); letter-spacing: .12em; text-transform: uppercase;
+    color: var(--pg); margin-bottom: 14px;
+  }
+  .pj-eyebrow-bar { width: 22px; height: 2px; background: var(--pg); border-radius: 1px; opacity: .6; display: inline-block; }
+  .pj-h2 {
+    font: 700 clamp(2.2rem,4vw,3.4rem)/1.15 var(--pser);
+    color: var(--pn); margin: 0 0 4px; letter-spacing: -.01em;
+  }
+  .pj-h2 em { font-style: italic; color: var(--pg); }
+  .pj-divider { width: 48px; height: 3px; background: var(--pg); border-radius: 2px; margin: 14px auto 18px; }
+  .pj-lead {
+    font: 400 16px/1.75 var(--psans); color: var(--ptxt);
+    max-width: 600px; margin: 0 auto;
+  }
+
+  /* ── Stats strip ── */
+  .pj-stats-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--pn); border-radius: 6px;
+    overflow: hidden; margin-bottom: 56px;
+    border: 1px solid rgba(196,149,42,.2);
+  }
+  @media(max-width:700px){ .pj-stats-strip{ grid-template-columns: repeat(2,1fr); } }
+  .pj-strip-item {
+    padding: 22px 20px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,.08);
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .pj-strip-item:last-child { border-right: none; }
+  .pj-strip-item strong { font: 700 24px/1 var(--pser); color: var(--pg); display: block; }
+  .pj-strip-item span   { font: 600 10.5px/1 var(--psans); color: rgba(255,255,255,.5); letter-spacing: .07em; text-transform: uppercase; }
+
+  /* ── Project Grid ── */
+  .pj-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+  @media(max-width:1100px){ .pj-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media(max-width:600px){  .pj-grid{ grid-template-columns: 1fr; } }
+
+  /* ── Card ── */
+  .pj-card {
+    background: var(--pw);
+    border: 1px solid var(--pbor);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: box-shadow .3s, transform .3s, border-color .3s;
+  }
+  .pj-card:hover {
+    box-shadow: 0 20px 52px rgba(7,24,51,.12);
+    transform: translateY(-4px);
+    border-color: rgba(196,149,42,.4);
+  }
+
+  /* Card image */
+  .pj-card-img-wrap {
+    position: relative; height: 180px; overflow: hidden;
+  }
+  .pj-card-img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .pj-card:hover .pj-card-img { transform: scale(1.05); }
+  .pj-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(7,24,51,.7) 0%, rgba(7,24,51,.1) 55%, transparent 100%);
     pointer-events: none;
-    z-index: 0;
-  }
-  .mv-blob--tl {
-    width: 500px; height: 500px;
-    top: -200px; left: -200px;
-    background: rgba(26, 79, 160, 0.18);
-  }
-  .mv-blob--br {
-    width: 400px; height: 400px;
-    bottom: -150px; right: -150px;
-    background: rgba(55, 138, 221, 0.12);
-  } */
-
-  /* layout */
-  .mv-container {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    align-items: center;
-  }
-  @media (min-width: 1024px) {
-    .mv-container {
-      flex-direction: row;
-      gap: 5rem;
-      align-items: center;
-    }
   }
 
-  .mv-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  /* Tag — top left */
+  .pj-card-tag {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--pn); color: var(--pg);
+    font: 700 10px/1 var(--psans); letter-spacing: .08em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 2px;
+    border-left: 3px solid var(--pg);
   }
 
-  .mv-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #dd8f1b;
-    margin-bottom: 1.2rem;
+  /* Status — top right */
+  .pj-status {
+    position: absolute; top: 14px; right: 14px;
+    display: inline-flex; align-items: center; gap: 6px;
+    font: 700 10px/1 var(--psans); letter-spacing: .07em; text-transform: uppercase;
+    padding: 4px 11px; border-radius: 2px; backdrop-filter: blur(6px);
   }
-  .mv-eyebrow__dot {
-    display: inline-block;
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #dd8f1b;
-    opacity: 0.6;
+  .pj-status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .status-active  { background: rgba(16,185,129,.18); color: #34d399; border: 1px solid rgba(52,211,153,.3); }
+  .status-active  .pj-status-dot { background: #34d399; animation: sdot 2s ease infinite; }
+  .status-dev     { background: rgba(245,158,11,.18);  color: #fbbf24; border: 1px solid rgba(251,191,36,.3); }
+  .status-dev     .pj-status-dot { background: #fbbf24; }
+  .status-plan    { background: rgba(99,102,241,.18);  color: #a5b4fc; border: 1px solid rgba(165,180,252,.3); }
+  .status-plan    .pj-status-dot { background: #a5b4fc; }
+  @keyframes sdot { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.5; transform:scale(1.4); } }
+
+  /* Card body */
+  .pj-card-body {
+    padding: 18px 20px 22px;
+    display: flex; flex-direction: column; flex: 1;
   }
 
-  .mv-heading {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-    font-weight: 900;
-    line-height: 1.05;
-    color: #ffffff;
-    margin: 0 0 1.5rem;
-    letter-spacing: -0.02em;
+  /* Meta row */
+  .pj-card-meta {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-bottom: 12px;
   }
-  .mv-heading--accent {
-    color: #dd8f1b;
-    font-style: italic;
+  .pj-meta-item {
+    display: inline-flex; align-items: center; gap: 5px;
+    font: 400 11.5px/1 var(--psans); color: var(--ptxt);
+  }
+  .pj-meta-item svg { color: var(--pg); flex-shrink: 0; }
+
+  .pj-card-title {
+    font: 700 clamp(1.25rem,2.5vw,1.65rem)/1.25 var(--pser);
+    color: var(--pn); margin: 0;
+  }
+  .pj-card-divider { width: 36px; height: 3px; background: var(--pg); border-radius: 2px; margin: 12px 0 14px; }
+  .pj-card-desc {
+    font: 400 14px/1.75 var(--psans); color: var(--ptxt);
+    margin: 0 0 16px; flex: 1;
   }
 
-  .mv-body {
-    font-size: 0.97rem;
-    line-height: 1.85;
-    color: #94a3b8;
-    margin: 0 0 1rem;
-    max-width: 520px;
-    font-weight: 300;
+  /* Tags */
+  .pj-card-tags {
+    display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px;
+  }
+  .pj-card-tags span {
+    background: var(--pb2); color: var(--pnm);
+    font: 600 10.5px/1 var(--psans); letter-spacing: .04em;
+    padding: 4px 11px; border-radius: 2px;
+    border-left: 2px solid var(--pg);
   }
 
-  /* stats */
-  .mv-stats {
-    display: flex;
-    align-items: center;
-    margin: 2rem 0 2.5rem;
-    padding: 1.5rem 2rem;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(221, 143, 27, 0.2);
-    border-radius: 16px;
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 1rem;
+  /* CTA */
+  .pj-card-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--pn); color: var(--pw);
+    font: 600 13px/1 var(--psans); padding: 11px 22px;
+    border-radius: 3px; text-decoration: none; width: fit-content;
+    border: 2px solid var(--pn); letter-spacing: .02em;
+    transition: background .2s, color .2s, border-color .2s;
   }
-  .mv-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  .pj-card-cta:hover {
+    background: var(--pg); border-color: var(--pg); color: var(--pn);
   }
-  .mv-stat__num {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #dd8f1b;
-    font-family: 'Playfair Display', serif;
-    line-height: 1;
-  }
-  .mv-stat__label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #64748b;
-    font-weight: 500;
-  }
-  .mv-stat__divider {
-    width: 1px;
-    height: 36px;
-    background: rgba(96,165,250,0.2);
-    flex-shrink: 0;
-  }
+  .pj-card-cta svg { transition: transform .2s; }
+  .pj-card-cta:hover svg { transform: translateX(4px); }
 
-  /* button */
-  .mv-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #dd8f1b;
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 0.85rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: background 0.25s, transform 0.2s;
+  /* ── Bottom CTA ── */
+  .pj-bottom-cta {}
+  .pj-cta-box {
+    background: var(--pn);
+    border-radius: 6px; padding: 48px 52px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+    position: relative; overflow: hidden;
+    border-bottom: 4px solid var(--pg);
   }
-  .mv-btn:hover {
-    background: #dd8f1b;
-    transform: translateY(-2px);
-  }
-  .mv-btn svg { transition: transform 0.2s; }
-  .mv-btn:hover svg { transform: translateX(4px); }
-
-  /* image */
-  .mv-image-wrap {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    position: relative;
-  }
-  .mv-image-frame {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 24px;
-    overflow: visible;
-  }
-  .mv-image {
-    width: 100%;
-    height: 580px;
-    object-fit: cover;
-    border-radius: 24px;
-    display: block;
-    background: linear-gradient(135deg, #0b2a5c, #1a4fa0);
-  }
-
-  /* floating badge */
-  .mv-badge {
-    position: absolute;
-    bottom: -1.5rem;
-    left: -1.5rem;
-    background: #12121e;
-    border: 1px solid rgba(96,165,250,0.25);
-    border-radius: 16px;
-    padding: 1rem 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 220px;
-    z-index: 2;
-  }
-  .mv-badge svg {
-    color: #dd8f1b;
-    flex-shrink: 0;
-    width: 24px; height: 24px;
-  }
-  .mv-badge__title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0;
-    line-height: 1.3;
-  }
-  .mv-badge__sub {
-    font-size: 0.72rem;
-    color: #dd8f1b;
-    margin: 0;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-  }
-
-  /* blue corner accent */
-  .mv-corner {
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    width: 100px;
-    height: 100px;
-    border-top: 3px solid #dd8f1b;
-    border-right: 3px solid #dd8f1b;
-    border-radius: 0 24px 0 0;
-    opacity: 0.4;
+  .pj-cta-box::before {
+    content: ''; position: absolute; right: -80px; top: -80px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,149,42,.1) 0%, transparent 70%);
     pointer-events: none;
-    z-index: 2;
+  }
+  .pj-cta-text h3 {
+    font: 700 clamp(1.4rem,2.5vw,2rem)/1.25 var(--pser);
+    color: var(--pw); margin: 0 0 8px;
+  }
+  .pj-cta-text p {
+    font: 400 14.5px/1.7 var(--psans); color: rgba(255,255,255,.58);
+    margin: 0; max-width: 440px;
+  }
+  .pj-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+  .pj-btn-gold {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--pg); color: var(--pn);
+    font: 700 13.5px/1 var(--psans); padding: 13px 26px;
+    border-radius: 3px; text-decoration: none; border: 2px solid var(--pg);
+    letter-spacing: .02em; white-space: nowrap;
+    transition: background .2s, border-color .2s, transform .2s;
+  }
+  .pj-btn-gold:hover { background: var(--pgh); border-color: var(--pgh); transform: translateY(-1px); }
+  .pj-btn-outline {
+    display: inline-flex; align-items: center;
+    background: transparent; color: var(--pw);
+    font: 600 13.5px/1 var(--psans); padding: 12px 24px;
+    border-radius: 3px; text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,.3); letter-spacing: .02em; white-space: nowrap;
+    transition: border-color .2s, background .2s;
+  }
+  .pj-btn-outline:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.07); }
+
+  @media(max-width:700px){
+    .pj-cta-box { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ── Scroll Animations ── */
+  [data-anim] {
+    opacity: 0;
+    transition:
+      opacity  .75s cubic-bezier(.22,1,.36,1),
+      transform .75s cubic-bezier(.22,1,.36,1);
+  }
+  [data-anim="fade-up"] { transform: translateY(28px); }
+  [data-anim].visible    { opacity: 1; transform: none; }
+  @media(prefers-reduced-motion:reduce){
+    [data-anim]{ opacity:1; transform:none; transition:none; }
   }
 </style>
+
+<script is:inline>
+  function initPjAnims() {
+    var els = document.querySelectorAll('#projects [data-anim]');
+    if (!els.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+  }
+  document.addEventListener('DOMContentLoaded', initPjAnims);
+  document.addEventListener('astro:page-load',  initPjAnims);
+</script>
